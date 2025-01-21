@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="HOME.TITLE">작업관리시스템 (EZJOBS)</entry>
+	<entry key="TITLE.MAIN">작업관리시스템 (EZJOBS)</entry>
+	
+	<entry key="POPUP.JOB_GRAPH.TITLE">JOB GRAPH</entry>
+	<entry key="POPUP.JOB_MEPPER.TITLE">작업정보/이력</entry>
+	<entry key="POPUP.CM_LOG.TITLE">CM LOG</entry>
+	<entry key="POPUP.CTM_LOG.TITLE">CTM LOG</entry>
+	<entry key="POPUP.SYSOUT.TITLE">SYSOUT</entry>
+	<entry key="POPUP.KUBERNETES.TITLE">Execution Log</entry>
+	<entry key="POPUP.CTM_WHY.TITLE">CTM-Why</entry>
+	<entry key="POPUP.USER_INFO.TITLE">사용자 정보</entry>
+	<entry key="POPUP.APPROVAL.TITLE">개인결재선</entry>
+	<entry key="POPUP.REAL_JOB_INFO.TITLE">실시간작업정보</entry>
+	<entry key="POPUP.HISTORY_JOB_INFO.TITLE">과거작업정보</entry>
+	<entry key="POPUP.REAL_HISTORY_JOB_INFO.TITLE">최종작업정보</entry>
+	<entry key="POPUP.SMART_JOB_INFO.TITLE">스마트작업정보</entry>
+	<entry key="POPUP.MEMO.TITLE">메모</entry>
+	
+	<entry key="ROWS.TOP.0">65</entry>
+	<entry key="ROWS.STATE.2">40</entry>
+	<entry key="ROWS.BOTTOM.0">40</entry>
+
+	<entry key="PAGING.ROWSIZE.BASIC">20</entry>
+	<entry key="PAGING.PAGESIZE.BASIC">10</entry>
+	<entry key="PAGING.ROWSIZE.ACTIVE_JOBS">50</entry>
+	<entry key="PAGING.PAGESIZE.ACTIVE_JOBS">10</entry>
+	<entry key="PAGING.ROWSIZE.JOB_MAPPER">20</entry>
+	<entry key="PAGING.PAGESIZE.JOB_MAPPER">10</entry>
+	<entry key="PAGING.ROWSIZE.JOB_MEMO">5</entry>
+	<entry key="PAGING.PAGESIZE.JOB_MEMO">10</entry>
+
+	<entry key="CATEGORY.0001">DASH BOARD</entry>
+	
+	<entry key="CATEGORY.0103">배치등록정보</entry>
+	<entry key="CATEGORY.0104">선행작업불일치</entry>
+	<entry key="CATEGORY.0105">일총괄표</entry>
+	<entry key="CATEGORY.0106">Forecast</entry>
+	<entry key="CATEGORY.0107">수행결과현황</entry>
+	<entry key="CATEGORY.0113">배치수행현황보고</entry>
+	<entry key="CATEGORY.0114">발행컨디션조회</entry>
+	<entry key="CATEGORY.0115">그룹작업결과현황</entry>
+	<entry key="CATEGORY.0116">지연배치조회</entry>
+	<entry key="CATEGORY.0117">선후행조회</entry>
+	<entry key="CATEGORY.0118">스케줄현황</entry>
+	<entry key="CATEGORY.0119">사용자요청사항</entry>
+	<entry key="CATEGORY.0121">공지사항관리</entry>
+	
+	<entry key="CATEGORY.9901">FrameWork결과</entry>
+	<!--entry key="CATEGORY.0301">BIM Monitor</entry-->
+	<entry key="CATEGORY.0401">OP배치 조회</entry>
+	<entry key="CATEGORY.0402">시간대별수행이력</entry>
+	<entry key="CATEGORY.0705">작업상태변경</entry>
+	<entry key="CATEGORY.0501">요청서류함</entry>
+	<entry key="CATEGORY.0502">결재서류함</entry>
+	<entry key="CATEGORY.0503">작업등록/변경 요청</entry>
+	<entry key="CATEGORY.0503_r">작업등록/변경 요청</entry>
+	<entry key="CATEGORY.0504">그룹작업등록</entry>
+	<entry key="CATEGORY.0601">Alert Monitor</entry>
+	<entry key="CATEGORY.0602">일배치오류관리</entry>
+	<entry key="CATEGORY.0608">전체수행현황</entry>
+	<entry key="CATEGORY.0701">사용자관리</entry>
+	<entry key="CATEGORY.0702">결재선관리</entry>
+	<entry key="CATEGORY.0703">전체결재현황</entry>
+	<entry key="CATEGORY.0704">부서/직책관리</entry>
+	<entry key="CATEGORY.0706">비정기작업의뢰</entry>
+	<entry key="CATEGORY.0707">일괄작업등록</entry>
+	<entry key="CATEGORY.0708">C-M 관리</entry>
+	<entry key="CATEGORY.0709">작업담당자·이력</entry>
+	<entry key="CATEGORY.0710">호스트관리</entry>
+	<entry key="CATEGORY.0711">코드관리</entry>
+	<entry key="CATEGORY.0712">운영결재자관리</entry>
+	<entry key="CATEGORY.0714">결재권자조회</entry>
+	<entry key="CATEGORY.0715">테이블관리</entry>
+	<entry key="CATEGORY.0716">작업상태변경이력</entry>
+	<entry key="CATEGORY.0717">QR리소스관리</entry>
+	<entry key="CATEGORY.0766">APP관리</entry>
+	<entry key="CATEGORY.0901">공지사항</entry>
+	<entry key="CATEGORY.0902">게시판</entry>
+	<entry key="CATEGORY.1001">App/Group관리</entry>
+	<entry key="CATEGORY.1002">스케즐관리</entry>
+
+	<entry key="USER_DAILY.SYSTEM.GB">Y|정기,N|비정기</entry>
+	<entry key="USER_DAILY.SYSTEM.GB.Y">정기</entry>
+	<entry key="USER_DAILY.SYSTEM.GB.N">비정기</entry>
+	
+	<entry key="ALERT.HANDLED.0">notice|Notice,handle|Handle</entry>
+	<entry key="ALERT.HANDLED.1">unnotice|Unnotice,handle|Handle</entry>
+	<entry key="ALERT.HANDLED.2">unnotice|Unnotice,unhandle|Unhandle</entry>
+	
+	<entry key="JOB_STATUS">Ended OK,Ended Not OK,Executing,Wait Time,Wait Condition,Wait Resource,Wait Host,Wait User,Wait Workload,Unknown,Not in AJF,Deleted</entry>
+   
+	<entry key="JOB_STATUS.Ended_OK">Job Success</entry>
+	<entry key="JOB_STATUS.Ended_Not_OK">Job Fail</entry>
+	<entry key="JOB_STATUS.Executing">Running</entry>
+	<entry key="JOB_STATUS.Wait_Time">Wait Time</entry>
+	<entry key="JOB_STATUS.Wait_Condition">Wait Condition</entry>
+	<entry key="JOB_STATUS.Wait_Resource">Wait Resource</entry>
+	<entry key="JOB_STATUS.Wait_Host">Wait Host</entry>
+	<entry key="JOB_STATUS.Wait_User">Wait Confirm</entry>
+	<entry key="JOB_STATUS.Wait_Workload">Wait Workload</entry>
+
+	<entry key="JOB_STATUS.Unknown">Unknown</entry>
+	<entry key="JOB_STATUS.Not_in_AJF">Etc</entry>
+	<entry key="JOB_STATUS.Etc">Etc</entry>
+	<!--<entry key="JOB_STATUS.Held">Hold</entry>-->
+	<entry key="JOB_STATUS.Deleted">Deleted</entry>
+	
+	<entry key="JOB_STATUS_COLOR.TOTAL">#99FF66</entry>
+	<entry key="JOB_STATUS_COLOR.Ended_OK">#31CE31</entry>
+	<entry key="JOB_STATUS_COLOR.Ended_Not_OK">#FF0000</entry>
+	<entry key="JOB_STATUS_COLOR.Executing">#CECE00</entry>
+	<entry key="JOB_STATUS_COLOR.Wait_Time">#FFCC66</entry>
+	<entry key="JOB_STATUS_COLOR.Wait_Condition">#999999</entry>
+	<entry key="JOB_STATUS_COLOR.Wait_Resource">#3131CE</entry>
+	<entry key="JOB_STATUS_COLOR.Wait_Host">#3131CE</entry>
+	<entry key="JOB_STATUS_COLOR.Wait_User">#FF31CE</entry>
+	<entry key="JOB_STATUS_COLOR.Wait_Workload">#3131CE</entry>
+	<entry key="JOB_STATUS_COLOR.Unknown">#FFFFE6</entry>
+	<entry key="JOB_STATUS_COLOR.Not_in_AJF">#CEFFFF</entry>
+	<entry key="JOB_STATUS_COLOR.Etc">#CEFFFF</entry>
+	<entry key="JOB_STATUS_COLOR.Held">#FF9966</entry>
+	<entry key="JOB_STATUS_COLOR.Deleted">#003333</entry>
+	
+	<entry key="JOB_STATUS_COLOR_G.Ended_OK">limegreen</entry>
+	<entry key="JOB_STATUS_COLOR_G.Ended_Not_OK">red</entry>
+	<entry key="JOB_STATUS_COLOR_G.Executing">yellow</entry>
+	<entry key="JOB_STATUS_COLOR_G.Wait_Time">moccasin</entry>
+	<entry key="JOB_STATUS_COLOR_G.Wait_Condition">gray</entry>
+	<entry key="JOB_STATUS_COLOR_G.Wait_Resource">royalblue</entry>
+	<entry key="JOB_STATUS_COLOR_G.Wait_Host">royalblue</entry>
+	<entry key="JOB_STATUS_COLOR_G.Wait_User">pink</entry>
+	<entry key="JOB_STATUS_COLOR_G.Wait_Workload">pink</entry>
+	<entry key="JOB_STATUS_COLOR_G.Unknown">ivory</entry>
+	<entry key="JOB_STATUS_COLOR_G.Not_in_AJF">lightcyan</entry>
+	<entry key="JOB_STATUS_COLOR_G.Etc">lightcyan</entry>
+	<entry key="JOB_STATUS_COLOR_G.Held">lightsalmon</entry>
+	<entry key="JOB_STATUS_COLOR_G.Deleted">darkslategray</entry>
+	
+	<entry key="JOB_OP_STATUS_COLOR.SUCCESS">#31CE31</entry>
+	<entry key="JOB_OP_STATUS_COLOR.FAIL">#FF0000</entry>
+	<entry key="JOB_OP_STATUS_COLOR.RUNNING">#CECE00</entry>
+	<entry key="JOB_OP_STATUS_COLOR.WAIT">#FFCC66</entry>
+	<entry key="JOB_OP_STATUS_COLOR.ETC">#CEFFFF</entry>	
+		
+	<!-- <entry key="USER.GB">01|사용자,02|운영자,99|관리자</entry> -->
+	<entry key="USER.GB">01|사용자,99|관리자</entry>
+	<entry key="USER.GB.01">사용자</entry>
+	<entry key="USER.GB.02">OP</entry>
+	<entry key="USER.GB.99">관리자</entry>
+	<entry key="USER.GB.98">시스템OP</entry>
+
+	<!-- 작업구분 -->
+	<entry key="DOC.GB">01|작업등록,02|긴급,03|작업삭제,04|작업수정,05|수시,05G|그룹수시,06|엑셀일괄,07|상태변경,09|일괄요청,10|오류처리</entry>
+	<entry key="DOC.GB.01">작업등록</entry>
+	<entry key="DOC.GB.02">긴급</entry>
+	<entry key="DOC.GB.03">작업삭제</entry>
+	<entry key="DOC.GB.04">작업수정</entry>
+	<entry key="DOC.GB.05">수시</entry>
+	<entry key="DOC.GB.05G">그룹수시</entry>
+	<entry key="DOC.GB.06">엑셀일괄</entry>
+	<entry key="DOC.GB.06C">엑셀일괄등록</entry>
+	<entry key="DOC.GB.06U">엑셀일괄수정</entry>
+	<entry key="DOC.GB.06D">엑셀일괄삭제</entry>
+	<entry key="DOC.GB.07">상태변경</entry>
+	<entry key="DOC.GB.08">예약상태변경</entry>
+	<entry key="DOC.GB.09">일괄요청</entry>
+	<entry key="DOC.GB.0901">일괄작업</entry>
+	<entry key="DOC.GB.0905">일괄수시</entry>
+	<entry key="DOC.GB.0907">일괄상태변경</entry>
+	<entry key="DOC.GB.0910">일괄오류처리</entry>
+	<entry key="DOC.GB.10">오류처리</entry>
+
+	<entry key="DOC.APPROVAL">05|전체,01|미결,02|결재,04|반려</entry>
+	<entry key="DOC.APPROVAL.05">전체</entry>
+	<entry key="DOC.APPROVAL.01">미결</entry>
+	<entry key="DOC.APPROVAL.02">결재</entry>
+	<entry key="DOC.APPROVAL.04">반려</entry>
+	
+	<entry key="DOC.STATE">05|전체,00|저장,01|미결,02|완결,04|반려</entry>
+	<entry key="DOC.STATE.05">전체</entry>
+	<entry key="DOC.STATE.00">저장</entry>
+	<entry key="DOC.STATE.01">미결</entry>
+	<entry key="DOC.STATE.02">완결</entry>
+	<entry key="DOC.STATE.04">반려</entry>
+	
+	<entry key="APPLY.STATE">99|전체,01|반영대기,02|반영완료<!-- ,03|반영취소 -->,04|반영실패</entry>
+	<entry key="APPLY.STATE.99">전체</entry>
+	<entry key="APPLY.STATE.01">반영대기</entry>
+	<entry key="APPLY.STATE.02">반영완료</entry>
+	<entry key="APPLY.STATE.03">반영취소</entry>
+	<entry key="APPLY.STATE.04">반영실패</entry>
+	<entry key="APPLY.STATE.05">반영중</entry>
+
+	<entry key="JOB.ACTION">HOLD,CONFIRM,FORCEOK,FREE,KILL,RERUN,RUNNOW,DELETE,UNDELETE</entry>
+	<entry key="JOB.ACTION_USER">HOLD,CONFIRM,FREE,RERUN,RUNNOW</entry>
+	
+	<entry key="JOB.ACTION_HOLD">FREE,DELETE,RERUN</entry>
+	<entry key="JOB.ACTION_CONFIRM">CONFIRM,HOLD</entry>
+	<entry key="JOB.ACTION_SUCCESS">HOLD,RERUN</entry>
+	<entry key="JOB.ACTION_FAIL">HOLD,FORCEOK,RERUN</entry>
+	<entry key="JOB.ACTION_RUNNING">HOLD,KILL</entry>
+	<entry key="JOB.ACTION_WAIT">HOLD,FORCEOK,RUNNOW</entry>
+	<entry key="JOB.ACTION_DELETE">UNDELETE</entry>
+	
+	<entry key="JOB.AND_OR">0|or,1|and</entry>
+	<entry key="JOB.AND_OR.0">or</entry>
+	<entry key="JOB.AND_OR.1">and</entry>
+
+	<entry key="JOB.RETRO">0|no,1|yes</entry>
+	<entry key="JOB.RETRO.0">no</entry>
+	<entry key="JOB.RETRO.1">yes</entry>
+	
+	<entry key="JOB.CAL_OPT">1|yes,0|no</entry>
+	<entry key="JOB.CAL_OPT.0">no</entry>
+	<entry key="JOB.CAL_OPT.1">yes</entry>
+	
+	<entry key="JOB.MULTIAGENT">0|no,1|yes</entry>
+	<entry key="JOB.MULTIAGENT.0">no</entry>
+	<entry key="JOB.MULTIAGENT.1">yes</entry>
+	
+	<entry key="JOB.CONFIRM_FLAG">0|no,1|yes</entry>
+	<entry key="JOB.CONFIRM_FLAG.0">no</entry>
+	<entry key="JOB.CONFIRM_FLAG.1">yes</entry>
+	
+	<entry key="JOB.CRITICAL">0|no,1|yes</entry>
+	<entry key="JOB.CRITICAL.0">no</entry>
+	<entry key="JOB.CRITICAL.1">yes</entry>
+	
+	<entry key="JOB.TIME_ZONE">HNL,HAW,ANC,PST,MST</entry>
+	
+	<entry key="JOB.CYCLIC">0|no,1|yes</entry>
+	<entry key="JOB.CYCLIC.0">no</entry>
+	<entry key="JOB.CYCLIC.1">yes</entry>
+	
+	<entry key="JOB.RERUN_INTERVAL_TIME">M|Minutes,H|Hours,D|Days</entry>
+	<entry key="JOB.RERUN_INTERVAL_TIME.M">Minutes</entry>
+	<entry key="JOB.RERUN_INTERVAL_TIME.H">Hours</entry>
+	<entry key="JOB.RERUN_INTERVAL_TIME.D">Days</entry>
+	
+	<entry key="JOB.COUNT_CYCLIC_FROM">target,start,end</entry>
+
+	<entry key="JOB.IN_COND_PAREN_S">,(</entry>
+	<entry key="JOB.IN_COND_PAREN_E">,)</entry>
+
+	<entry key="JOB.IN_CONDITION_DATE">ODAT,STAT,PREV,NEXT</entry>
+	<entry key="JOB.IN_CONDITION_AND_OR2">and,or</entry>
+	
+	<entry key="JOB.IN_CONDITION_AND_OR">and|AND,or|OR</entry> 
+	<entry key="JOB.IN_CONDITION_AND_OR.and">AND</entry>
+	<entry key="JOB.IN_CONDITION_AND_OR.or">OR</entry>
+	
+	<entry key="JOB.OUT_CONDITION_DATE">ODAT,STAT,PREV,NEXT</entry>
+	<entry key="JOB.OUT_CONDITION_EFFECT2">add,delete</entry>
+
+	<entry key="JOB.OUT_CONDITION_EFFECT">add|+,delete|-</entry>
+	<entry key="JOB.OUT_CONDITION_EFFECT.add">+</entry>
+	<entry key="JOB.OUT_CONDITION_EFFECT.delete">-</entry>
+
+	<entry key="JOB.STEP_OPT">O|On,A|Do</entry>
+	<entry key="JOB.STEP_OPT.O">On</entry>
+	<entry key="JOB.STEP_OPT.A">Do</entry>
+
+	<entry key="JOB.STEP_ON_TYPE">Statement</entry>
+	<entry key="TABLE.STEP_ON_TYPE">Statement|Statement,정상종료|OK,비정상종료|NOTOK,종료코드|COMPSTAT,수행횟수|RUNCOUNT,오류건수|FAILCOUNT</entry>
+
+	<entry key="JOB.STEP_DO_TYPE">OK,NOTOK,RERUN,Stop Cyclic,Set-Var,Shout,Force-Job,Sysout,Condition,Mail</entry>
+	<entry key="TABLE.STEP_DO_TYPE">정상처리|OK,비정상처리|NOTOK,재수행|RERUN,반복멈춤|Stop Cyclic,작업ORDER|Force-Job,컨디션 발행/삭제|Condition,CMD발행|Shout,Mail|Mail</entry> 
+
+	<entry key="TABLE.STEP_ON_PARAMETERS">=|EQ,!=|NE,<![CDATA[<]]>|LT,<![CDATA[<=]]>|LE,<![CDATA[>]]>|GT,<![CDATA[>=]]>|GE,EVEN|EVEN,ODD|ODD</entry>
+
+	<entry key="JOB.STEP_URGENCY">regular|Regular,urgent|Urgent,very_urgent|Very Urgent</entry>
+	<entry key="JOB.STEP_URGENCY.regular">Regular</entry>
+	<entry key="JOB.STEP_URGENCY.urgent">Urgent</entry>
+	<entry key="JOB.STEP_URGENCY.very_urgent">Very Urgent</entry>
+
+	<entry key="JOB.STEP_SIGN">add|+,delete|-</entry>
+	<entry key="JOB.STEP_SIGN.add">+</entry>
+	<entry key="JOB.STEP_SIGN.delete">-</entry>
+
+	<entry key="APPROVAL.ORDER">1,2,3,4,5,6,7,8</entry>
+
+	<entry key="JOB.POSTPROC_URGENCY">regular|Regular,urgent|Urgent,very_urgent|Very Urgent</entry>
+	<entry key="JOB.POSTPROC_URGENCY.regular">Regular</entry>
+	<entry key="JOB.POSTPROC_URGENCY.urgent">Urgent</entry>
+	<entry key="JOB.POSTPROC_URGENCY.very_urgent">Very Urgent</entry>
+
+	<entry key="JOB.CYCLIC_TYPE">C|interval,V|interval_sequence,S|specific_times</entry>
+	<entry key="JOB.CYCLIC_TYPE.C">interval</entry>
+	<entry key="JOB.CYCLIC_TYPE.V">interval_sequence</entry>
+	<entry key="JOB.CYCLIC_TYPE.S">specific_times</entry>
+
+	<entry key="COMCODE.SERVER.CODE">M5</entry>		<!-- 공통코드에 서버계정(SHEEL 실행 계정) 코드 -->
+	<entry key="DATA.CENTER.CODE">M1</entry>		<!-- 공통코드에 C-M 코드 -->
+	<entry key="COMCODE.APPGRP.CODE">M6</entry>		<!-- CTM 관리 마스터 코드 -->
+
+	<!-- 결재유형 -->
+	<entry key="APPROVAL.TYPE">01,03</entry>
+	<entry key="APPROVAL.TYPE.01">결재</entry>
+	<entry key="APPROVAL.TYPE.03">후결</entry>
+
+	<entry key="APPROVAL.GB">02,03</entry>
+	<entry key="APPROVAL.GB.02">부서장</entry>
+	<entry key="APPROVAL.GB.03">현장대리인</entry>
+
+	<!-- 결재문서구분 -->
+	<entry key="DOC_GUBUN">01,05,07,10</entry>
+	<entry key="DOC_GUBUN.01">등록</entry>
+	<entry key="DOC_GUBUN.05">실행</entry>
+	<entry key="DOC_GUBUN.07">상태변경</entry>
+	<entry key="DOC_GUBUN.10">오류처리</entry>
+
+	<entry key="USER.APPR.GB" >00</entry>
+	<entry key="USER.APPR.GB.00" >결재자</entry>
+	
+	<entry key="ADMIN.APPROVAL.GB" >00,01</entry>
+	<entry key="ADMIN.APPROVAL.GB.00" >필수결재</entry>
+	<entry key="ADMIN.APPROVAL.GB.01" >개인결재</entry>
+
+	<entry key="JOB_SCHED_GB">1|정기,2|수시</entry>
+	<entry key="JOB_SCHED_GB.1">정기</entry>
+	<entry key="JOB_SCHED_GB.2">수시</entry>
+
+	<!-- 유저관리 > 잠금관리 -->
+	<entry key="ACCOUNT_STATUS">Y,N,M,U</entry>
+   	<entry key="ACCOUNT_STATUS.Y">계정잠금</entry>
+   	<entry key="ACCOUNT_STATUS.N">사용가능</entry>
+   	<entry key="ACCOUNT_STATUS.M">장기미사용잠김</entry>
+   	<entry key="ACCOUNT_STATUS.U">임시잠금해제</entry>
+   	
+   	<!-- 유저관리 > 사용여부 -->
+   	<entry key="USER_STATUS">Y,N</entry>
+	<entry key="USER_STATUS.Y">사용</entry>
+	<entry key="USER_STATUS.N">미사용</entry>
+
+	<!-- 알람이력 > 통보사유 -->
+	<entry key="JOB_SEND_STATUS">Ended not OK|오류발생,Ended OK|정상종료,LATE_SUB|시작임계시간 초과,LATE_TIME|종료임계시간 초과,LATE_EXEC|수행임계시간 초과,AVG_OVERTIME|평균수행시간 초과,APPROVAL|결재요청,EXEC|반영상태</entry>
+
+	<entry key="JOB_SEND_STATUS.Ended not OK">오류발생</entry>
+	<entry key="JOB_SEND_STATUS.Ended OK">정상종료</entry>
+	<entry key="JOB_SEND_STATUS.LATE_SUB">시작임계시간 초과</entry>
+	<entry key="JOB_SEND_STATUS.LATE_TIME">종료임계시간 초과</entry>
+	<entry key="JOB_SEND_STATUS.LATE_EXEC">수행임계시간 초과</entry>
+	<entry key="JOB_SEND_STATUS.AVG_OVERTIME">평균수행시간 초과</entry>
+	<entry key="JOB_SEND_STATUS.APPROVAL">결재요청</entry>
+	<entry key="JOB_SEND_STATUS.EXEC">반영상태</entry>
+
+	<!-- 오류 발생 시 조치 유형 -->
+	<entry key="JOB.ERROR_ACTION">즉시연락,1회재작업,오류무시,출근후조치</entry>
+	<entry key="JOB.ERROR_ACTION.R">1회재작업</entry>
+	<entry key="JOB.ERROR_ACTION.E">오류무시</entry>
+	<entry key="JOB.ERROR_ACTION.C">즉시연락</entry>
+	<entry key="JOB.ERROR_ACTION.A">출근 후 조치</entry>
+
+	<!-- 스크롤링 페이징 조회 수 설정 -->
+	<entry key="PAGING.NUM">1000</entry>
+	
+	<entry key="JOB.CONF_CAL">Ignore Job,Next Day,Prev Day,No Confcal</entry>
+
+</properties>

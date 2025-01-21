@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- 개발:D, 테스트:T, 운영:P -->
+	<entry key="SERVER_GB">D</entry>
+
+	<!-- DB 버전 설정 -->
+	<entry key="#DB_GUBUN">ORACLE</entry>
+	<entry key="DB_GUBUN">POSTGRE</entry>
+	<entry key="DB_GUBUN_SHOW">Y</entry>	<!-- 사무실 : Y / 고객사 : N > Y일 경우 상단에 DB 버전 표기 -->
+
+	<!-- DB 계정정보 -->
+	<entry key="jdbc_em.username">emuser</entry>
+	<entry key="jdbc_em.password">ZW1wYXNz</entry>
+	<entry key="jdbc_ctm.username">ctmuser</entry>
+	<entry key="jdbc_ctm.password">Y3RtcGFzcw==</entry>
+
+	<entry key="jdbc_em.driverClassName.ORACLE">core.log.jdbc.driver.OracleDriver</entry>
+	<entry key="jdbc_ctm.driverClassName.ORACLE">core.log.jdbc.driver.OracleDriver</entry>
+
+	<entry key="jdbc_em.driverClassName.POSTGRE">org.postgresql.Driver</entry>
+	<entry key="jdbc_ctm.driverClassName.POSTGRE">org.postgresql.Driver</entry>
+</properties>

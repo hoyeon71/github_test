@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="HR_DEPT_URL"></entry>
+	<entry key="HR_USER_URL"></entry>
+	<entry key="SSO_URL"></entry>
+	<entry key="SSO_RETURN_URL"></entry>
+	<entry key="SSO_ACCESS_URL"></entry>
+	<entry key="SSO_INFO_URL"></entry>
+	<entry key="SSO_LOGOUT_URL"></entry>
+
+	<entry key="KAKAOWORK.URL"></entry>
+	<entry key="HOOK.URL"></entry>
+	<entry key="EMAIL.URL"></entry>
+	<entry key="MAIL.HOST"></entry>
+	<entry key="UC.URL"></entry>
+
+	<entry key="MESSENGER_URL"></entry>
+	<entry key="MESSENGER_PORT"></entry>
+
+	<entry key="SMS.HOST"></entry>
+	<entry key="SMS.USER_ID"></entry>
+	<entry key="SMS.USER_PW"></entry>
+	<entry key="SEND_PHONE"></entry>
+
+	<entry key="INSA.DB.URL"></entry>
+	<entry key="INSA.DB.ID"></entry>
+	<entry key="INSA.DB.PW"></entry>
+	
+	<entry key="AD.ID"></entry>
+	<entry key="AD.PW"></entry>
+	<entry key="AD.PORT"></entry> 
+	<entry key="AD.IP"></entry>
+	<entry key="AD.LDAP.DOMAIN"></entry>
+	<entry key="AD.DIST.NAME"></entry>
+
+	<entry key="FORECAST.PATH"></entry>
+	<entry key="SSH.KEY_FILE">C:/Users/가연/.ssh/id_rsa</entry>
+	
+	<!-- Condition 접미사 -->
+	<entry key="COND_SUFFIX">-OK</entry>
+	
+
+</properties>

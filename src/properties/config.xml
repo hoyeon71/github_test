@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<entry key="SYSADMIN.ID" >ghayoun</entry>
+<!-- entry key="SYSADMIN.PW" >b9fad07f63adf814601b250189133fa765b11758982eb951331a8c47068e1ea8</entry-->
+<entry key="SYSADMIN.PW" >DC0227136A3F084B90F9BA1A8C7D011C0A0658C6616D26C7916698B870F44BA45F69A91C46CA200582521B0242A4CB6B627DBDEEF1AE7A5843C59784916D6844</entry>
+
+<entry key="D.HOME.TITLE">통합배치모니터링 시스템</entry>
+<entry key="D.TITLE.MAIN">통합배치모니터링 시스템</entry>
+
+<entry key="P.HOME.TITLE">통합배치모니터링 시스템</entry>
+<entry key="P.TITLE.MAIN">통합배치모니터링 시스템</entry>
+
+<entry key="CATEGORY.GB">08<!--,01-->,02,03,04,09,06</entry>
+<entry key="CATEGORY.GB.08">개인설정</entry>
+<entry key="CATEGORY.GB.01">결재</entry>
+<entry key="CATEGORY.GB.02">의뢰</entry>
+<entry key="CATEGORY.GB.03">조회</entry>
+<entry key="CATEGORY.GB.04">모니터링</entry>
+<entry key="CATEGORY.GB.09">보고서</entry>
+<entry key="CATEGORY.GB.06">관리자</entry>
+<entry key="CATEGORY.GB.05">통계</entry>
+<entry key="CATEGORY.GB.10">오류관리</entry>
+
+<entry key="CATEGORY.GB.08.GB">0801,0802,0803</entry>
+<entry key="CATEGORY.GB.08.GB.0801">개인정보,tWorks.ez?c=ez002_edit,00</entry>
+<entry key="CATEGORY.GB.08.GB.0802">개인결재선,tWorks.ez?c=userApprovalLine,00</entry>
+<entry key="CATEGORY.GB.08.GB.0803">결재선조회,tWorks.ez?c=adminApprovalLine_u,00</entry>
+
+<entry key="CATEGORY.GB.01.GB"></entry>
+
+<entry key="CATEGORY.GB.02.GB">0201,0202,0205,0206,<!-- 0213,0208-->0215</entry>
+<entry key="CATEGORY.GB.02.GB.0201">등록요청서,tWorks.ez?c=ez004_w_new&amp;menu_gb=0201&amp;doc_gb=01,00</entry>
+<entry key="CATEGORY.GB.02.GB.0202">긴급요청서,tWorks.ez?c=ez004_w_new&amp;menu_gb=0202&amp;doc_gb=02,00</entry>
+<entry key="CATEGORY.GB.02.GB.0205">엑셀일괄요청서,tWorks.ez?c=ez004_w_new&amp;menu_gb=0205&amp;doc_gb=06,00</entry>
+<entry key="CATEGORY.GB.02.GB.0206">수시작업의뢰,tWorks.ez?c=ez010&amp;menu_gb=0206,00</entry>
+<entry key="CATEGORY.GB.02.GB.0215">그룹수시작업의뢰,tWorks.ez?c=ez215&amp;menu_gb=0215,00</entry>
+<entry key="CATEGORY.GB.02.GB.0213">오류조치,aEm.ez?c=ez003&amp;menu_gb=0213,00</entry> 
+<entry key="CATEGORY.GB.02.GB.0203">정기작업삭제,tWorks.ez?c=ez0203&amp;menu_gb=0203&amp;doc_gb=03,01</entry>
+<entry key="CATEGORY.GB.02.GB.0204">정기작업수정,tWorks.ez?c=ez0204&amp;menu_gb=0204&amp;doc_gb=04,01</entry>
+
+<entry key="CATEGORY.GB.03.GB"><!-- 0301, 0304,0344,--><!-- 0302, 0321,-->0399,0390<!-- ,0314, 0310,0313,0319,0312,0316,0317,0318,--><!-- ,0315 ,0320,0209-->,0319,0322</entry>
+<entry key="CATEGORY.GB.03.GB.0301">작업등록,tWorks.ez?c=ez004&amp;menu_gb=0301&amp;doc_gb=01,00</entry>
+<entry key="CATEGORY.GB.03.GB.0302">수행/상태변경,tWorks.ez?c=ez004&amp;menu_gb=0302&amp;doc_gb=02,00</entry>
+<entry key="CATEGORY.GB.03.GB.0304">엑셀일괄(요청),tWorks.ez?c=ez004&amp;menu_gb=0304&amp;doc_gb=06,00</entry>
+<entry key="CATEGORY.GB.03.GB.0321">반영대기목록,tWorks.ez?c=ez004&amp;menu_gb=0321&amp;doc_gb=00,00</entry>
+<entry key="CATEGORY.GB.03.GB.0399">요청문서함,tWorks.ez?c=ez004&amp;menu_gb=0399&amp;doc_gb=99,00</entry>
+<entry key="CATEGORY.GB.03.GB.0344">엑셀일괄(결재),tWorks.ez?c=ez005&amp;menu_gb=0344&amp;doc_gb=06,00</entry>
+<entry key="CATEGORY.GB.03.GB.0390">결재문서함,tWorks.ez?c=ez005&amp;menu_gb=0390&amp;doc_gb=99,00</entry>
+<entry key="CATEGORY.GB.03.GB.0310">오류조치,tWorks.ez?c=ez044_list&amp;menu_gb=0310&amp;doc_gb=11,00</entry>
+<entry key="CATEGORY.GB.03.GB.0313">오류조치(OP),tWorks.ez?c=ez044_op_list&amp;menu_gb=0313&amp;doc_gb=11,02</entry>
+<entry key="CATEGORY.GB.03.GB.0319">제3자검증,tWorks.ez?c=ez046_list&amp;menu_gb=0319&amp;doc_gb=17,02</entry>
+<entry key="CATEGORY.GB.03.GB.0312">일별수행,tWorks.ez?c=ez050_list&amp;menu_gb=0312&amp;doc_gb=13,02</entry>
+<entry key="CATEGORY.GB.03.GB.0316">시스템별현황,tWorks.ez?c=ez051_list&amp;menu_gb=0316&amp;doc_gb=14,02</entry>
+<entry key="CATEGORY.GB.03.GB.0317">업무별현황,tWorks.ez?c=ez052_list&amp;menu_gb=0317&amp;doc_gb=15,02</entry>
+<entry key="CATEGORY.GB.03.GB.0318">월간현황,tWorks.ez?c=ez053_list&amp;menu_gb=0317&amp;doc_gb=16,02</entry>
+<entry key="CATEGORY.GB.03.GB.0315">Alert,aEm.ez?c=ez001&amp;menu_gb=0315,02</entry>
+<entry key="CATEGORY.GB.03.GB.0305">수시결과의뢰조회,tWorks.ez?c=ez004&amp;menu_gb=0305&amp;doc_gb=07,01</entry>
+<entry key="CATEGORY.GB.03.GB.0306">오류원인의뢰조회,tWorks.ez?c=ez004&amp;menu_gb=0306&amp;doc_gb=08,01</entry>
+<entry key="CATEGORY.GB.03.GB.0307">오류조치결과의뢰조회(OP),tWorks.ez?c=ez004&amp;menu_gb=0307&amp;doc_gb=09,01</entry>
+<entry key="CATEGORY.GB.03.GB.0309">결재이력조회(모든문서),tWorks.ez?c=ez007&amp;menu_gb=0103&amp;,01</entry>
+<entry key="CATEGORY.GB.03.GB.0303">정기작업수시의뢰조회,tWorks.ez?c=ez004&amp;menu_gb=0303&amp;doc_gb=05,01</entry>
+<entry key="CATEGORY.GB.03.GB.0319">작업등록정보,mEm.ez?c=ez003&amp;menu_gb=0319,00</entry>
+<entry key="CATEGORY.GB.03.GB.0320">담당자그룹,tWorks.ez?c=ezGroupUserGroup&amp;menu_gb=0320,00</entry>
+<entry key="CATEGORY.GB.03.GB.0322">그룹JOB등록,tWorks.ez?c=ez054&amp;menu_gb=0322,00</entry>
+
+<entry key="CATEGORY.GB.04.GB">0415,0401,0405,0402,0414,0416,0417<!--0406,0407,0408,0409,0410 --></entry>
+<entry key="CATEGORY.GB.04.GB.0401">작업상태변경,tWorks.ez?c=ez009&amp;menu_gb=0401,00</entry>
+<entry key="CATEGORY.GB.04.GB.0405">과거수행,mEm.ez?c=ez007&amp;menu_gb=0405,00</entry>
+<entry key="CATEGORY.GB.04.GB.0415">작업수행관리,mEm.ez?c=ez007_history&amp;menu_gb=0415,00</entry>
+<entry key="CATEGORY.GB.04.GB.0402">오류관리,aEm.ez?c=ez003_op&amp;menu_gb=0402,00</entry>
+<entry key="CATEGORY.GB.04.GB.0406">장시간수행,mEm.ez?c=ez007&amp;menu_gb=0406,02</entry>
+<entry key="CATEGORY.GB.04.GB.0407">선행불일치,mEm.ez?c=ez004&amp;menu_gb=0407,00</entry>
+<entry key="CATEGORY.GB.04.GB.0408">발행컨디션,mEm.ez?c=ez019&amp;menu_gb=0408,00</entry>
+<entry key="CATEGORY.GB.04.GB.0409">정보계수행,mEm.ez?c=ez005&amp;menu_gb=0409,00</entry>
+<entry key="CATEGORY.GB.04.GB.0410">제3자검증,mEm.ez?c=ez023&amp;menu_gb=0410,00</entry>
+<entry key="CATEGORY.GB.04.GB.0403">작업명세,mEm.ez?c=ez003&amp;menu_gb=0403,01</entry>
+<entry key="CATEGORY.GB.04.GB.0404">실시간모니터링,aEm.ez?c=ez003&amp;menu_gb=0404,01</entry>
+<entry key="CATEGORY.GB.04.GB.0414">알람이력,common.ez?c=ezSendLogList&amp;menu_gb=0414,00</entry>
+<entry key="CATEGORY.GB.04.GB.0416">Alert Monitor,aEm.ez?c=ez001&amp;menu_gb=0416,00</entry>
+<entry key="CATEGORY.GB.04.GB.0417">Forecast,mEm.ez?c=ez006&amp;menu_gb=0209,00</entry>
+
+<entry key="CATEGORY.GB.09.GB">0905,<!-- 0902,0910, -->0906,0907,0908,0909<!-- ,0911 --></entry> 
+<entry key="CATEGORY.GB.09.GB.0901">일별수행,tWorks.ez?c=ez050&amp;menu_gb=0901&amp;doc_gb=13,99</entry>
+<!-- <entry key="CATEGORY.GB.09.GB.0905">보고서_업무별수행,mEm.ez?c=ez044&amp;menu_gb=0905&amp;doc_gb=13,00</entry> -->
+<entry key="CATEGORY.GB.09.GB.0905">일별수행,mEm.ez?c=ez044&amp;menu_gb=0905&amp;doc_gb=13,00</entry>
+<!-- <entry key="CATEGORY.GB.09.GB.0902">보고서_시스템별현황,tWorks.ez?c=ez051&amp;menu_gb=0902&amp;doc_gb=14,99</entry> -->
+<entry key="CATEGORY.GB.09.GB.0902">작업등록현황,tWorks.ez?c=ez051&amp;menu_gb=0902&amp;doc_gb=14,00</entry>
+<entry key="CATEGORY.GB.09.GB.0903">업무별현황,tWorks.ez?c=ez052&amp;menu_gb=0903&amp;doc_gb=15,99</entry>
+<entry key="CATEGORY.GB.09.GB.0904">월간현황,tWorks.ez?c=ez053&amp;menu_gb=0904&amp;doc_gb=16,99</entry>
+<entry key="CATEGORY.GB.09.GB.0906">폴더별누적배치,tWorks.ez?c=batchTotal&amp;menu_gb=0906,99</entry>
+<entry key="CATEGORY.GB.09.GB.0907">기간별의뢰결재현황,tWorks.ez?c=docApprovalTotal&amp;menu_gb=0907,99</entry> 
+<entry key="CATEGORY.GB.09.GB.0908">상세수행현황,tWorks.ez?c=jobCondTotal&amp;menu_gb=0908,99</entry>
+<entry key="CATEGORY.GB.09.GB.0909">에러조치내역,tWorks.ez?c=errorLogTotal&amp;menu_gb=0909,99</entry>
+<entry key="CATEGORY.GB.09.GB.0910">운영업무보고,mEm.ez?c=ez045&amp;menu_gb=0910&amp;doc_gb=13,00</entry>
+<entry key="CATEGORY.GB.09.GB.0911">마감배치보고서,mEm.ez?c=ez046&amp;menu_gb=0911&amp;doc_gb=13,00</entry>
+
+<!-- <entry key="CATEGORY.GB.06.GB">0601,0602,0604,0614,0615,0605,0607,0608,0609,0610,0612,0613</entry> -->
+<entry key="CATEGORY.GB.06.GB">0601,0602,0604,0624,<!-- 0615, -->0605,0607,0609,0612,0613<!--,0617-->,0620,0622,0611,0616,0623</entry>
+<entry key="CATEGORY.GB.06.GB.0601">부서/직책관리,tWorks.ez?c=ez008&amp;menu_gb=0601,99</entry>
+<entry key="CATEGORY.GB.06.GB.0602">유저관리,tWorks.ez?c=ez002&amp;menu_gb=0602,99</entry> 
+<entry key="CATEGORY.GB.06.GB.0603">C-M관리,mEm.ez?c=ez010&amp;menu_gb=0603,99</entry>
+<entry key="CATEGORY.GB.06.GB.0604">호스트관리,tWorks.ez?c=ez013&amp;menu_gb=0604,99</entry>
+<entry key="CATEGORY.GB.06.GB.0605">코드관리,common.ez?c=ezComCode&amp;menu_gb=0605,99</entry>
+<!-- <entry key="CATEGORY.GB.06.GB.0606">결재라인관리,tWorks.ez?c=ez022&amp;menu_gb=0606,02</entry> -->
+<entry key="CATEGORY.GB.06.GB.0607">시스템관리,common.ez?c=ezAppGrp&amp;menu_gb=0607,99</entry>
+<entry key="CATEGORY.GB.06.GB.0609">공지사항관리,common.ez?c=ezBoardList&amp;menu_gb=0609,99</entry>
+<entry key="CATEGORY.GB.06.GB.0610">Agent정보,common.ez?c=ezCtmAgent&amp;menu_gb=0610,99</entry>
+<entry key="CATEGORY.GB.06.GB.0611">EzJOBs배치조회,common.ez?c=ezQuartzList&amp;menu_gb=0611,99</entry>
+<entry key="CATEGORY.GB.06.GB.0612">필수결재선설정,tWorks.ez?c=adminApprovalLine,99</entry>
+<entry key="CATEGORY.GB.06.GB.0613">그룹결재선설정,tWorks.ez?c=groupApprovalLine,99</entry>
+<entry key="CATEGORY.GB.06.GB.0614">호스트그룹관리,tWorks.ez?c=ez013_grp&amp;menu_gb=0614,99</entry>
+<entry key="CATEGORY.GB.06.GB.0615">스마트폴더관리,common.ez?c=ezSmartForderList&amp;menu_gb=0615,99</entry>
+<entry key="CATEGORY.GB.06.GB.0616">DB,common.ez?c=ezDbSql&amp;menu_gb=0616,99</entry>
+<entry key="CATEGORY.GB.06.GB.0617">업무그룹관리,tWorks.ez?c=ez055&amp;menu_gb=0617,99</entry>
+<entry key="CATEGORY.GB.06.GB.0619">리소스모니터링,tWorks.ez?c=ez057&amp;menu_gb=0619,99</entry>
+<entry key="CATEGORY.GB.06.GB.0620">알림설정관리,tWorks.ez?c=ezAlarmInfoList&amp;menu_gb=0620,99</entry>
+<entry key="CATEGORY.GB.06.GB.0621">시간대별리소스,mEm.ez?c=ez013&amp;menu_gb=0621,99</entry>
+<entry key="CATEGORY.GB.06.GB.0622">발행컨디션,mEm.ez?c=ez019&amp;menu_gb=0622,99</entry>
+<entry key="CATEGORY.GB.06.GB.0623">엑셀검증,tWorks.ez?c=ez004_w_new&amp;menu_gb=0623&amp;doc_gb=06&amp;verify=Y,99</entry>
+<entry key="CATEGORY.GB.06.GB.0624">DB관리,tWorks.ez?c=ez045&amp;menu_gb=0624,99</entry>
+
+<entry key="#CATEGORY.GB.05.GB">0501,0502,0503,0504,0505,0506,0507</entry>
+<entry key="CATEGORY.GB.05.GB">0503,0508</entry>
+<entry key="CATEGORY.GB.05.GB.0501">작업결과,mEm.ez?c=ez005&amp;menu_gb=0501</entry>
+<entry key="CATEGORY.GB.05.GB.0502">임계시간초과작업명세,mEm.ez?c=ez005&amp;menu_gb=0502</entry>
+<entry key="CATEGORY.GB.05.GB.0504">일일보고서,mEm.ez?c=ez005&amp;menu_gb=0504</entry>
+<entry key="CATEGORY.GB.05.GB.0505">AutoCall발송조회,mEm.ez?c=ez005&amp;menu_gb=0505</entry>
+<entry key="CATEGORY.GB.05.GB.0506">수시결과의뢰,mEm.ez?c=ez005&amp;menu_gb=0506</entry>
+<entry key="CATEGORY.GB.05.GB.0507">오류조치내역조회,mEm.ez?c=ez005&amp;menu_gb=0507</entry>
+<entry key="CATEGORY.GB.05.GB.0508">전체수행현황,mEm.ez?c=ez044&amp;menu_gb=0508</entry>
+
+<entry key="CATEGORY.GB.10.GB">1001,1002</entry>
+<entry key="CATEGORY.GB.10.GB.1001">오류조치,aEm.ez?c=ez003&amp;menu_gb=1001</entry>
+<entry key="CATEGORY.GB.10.GB.1002">Alert Monitor,aEm.ez?c=ez001&amp;menu_gb=1002</entry>
+ 
+<entry key="CATEGORY.GB.03.SB.0300">의뢰문서상세</entry>
+<entry key="CATEGORY.GB.03.SB.0301">정기작업의뢰문서(신규)</entry>
+<entry key="CATEGORY.GB.03.SB.0302">긴급요청서</entry>
+<entry key="CATEGORY.GB.03.SB.0303">정기작업의뢰문서(삭제)</entry>
+<entry key="CATEGORY.GB.03.SB.0304">정기작업의뢰문서(수정)</entry>
+<entry key="CATEGORY.GB.03.SB.0305">그룹수시작업의뢰문서</entry>
+<entry key="CATEGORY.GB.03.SB.0306">엑셀일괄의뢰문서</entry>
+<entry key="CATEGORY.GB.03.SB.0307">작업상태변경의뢰문서</entry>
+<entry key="CATEGORY.GB.03.SB.0309">일괄요청의뢰문서</entry>
+<entry key="CATEGORY.GB.03.SB.0310">작업등록정보</entry>
+
+<entry key="CATEGORY.GB.09.SB.0900">부서별의뢰현황</entry>
+
+<entry key="susi.excel.sample">susi_sample.xls</entry>
+<entry key="excel.sample">EzJobs_DefJOB_Sample.xlsx</entry>
+<entry key="CATEGORY.POP.01">이전데이터불러오기(수시)</entry>
+<entry key="CATEGORY.POP.02">직접입력</entry>
+<entry key="CATEGORY.POP.03">담당자일괄변경</entry>
+<entry key="CATEGORY.POP.04">반복작업</entry>
+<entry key="CATEGORY.POP.05">정기데이터불러오기</entry>
+<entry key="CATEGORY.POP.06">Select Connection Profile</entry>
+<entry key="CATEGORY.POP.07">Select Schema</entry>
+<entry key="CATEGORY.POP.08">Select Procedure</entry>
+
+</properties>

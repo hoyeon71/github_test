@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ORACLE_A">
+
+	<typeAlias alias="AlertBean" 	type="com.ghayoun.ezjobs.a.domain.AlertBean" />
+
+	<!-- alertList -->
+	<sql id="alertListInc">
+	/* ORACLE_A > alertListInc */
+	<![CDATA[
+		from alarm t LEFT OUTER JOIN
+		( SELECT job,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_1 ) AS user_nm,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_2 ) AS user_nm2,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_3 ) AS user_nm3,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_4 ) AS user_nm4,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_5 ) AS user_nm5,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_6 ) AS user_nm6,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_7 ) AS user_nm7,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_8 ) AS user_nm8,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_9 ) AS user_nm9,
+		( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_10 ) AS user_nm10,
+		( SELECT group_line_grp_nm FROM $SCHEMA$.EZ_GROUP_APPROVAL_GROUP WHERE group_line_grp_cd = tb1.grp_cd_1 ) AS grp_nm_1,
+		( SELECT group_line_grp_nm FROM $SCHEMA$.EZ_GROUP_APPROVAL_GROUP WHERE group_line_grp_cd = tb1.grp_cd_2 ) AS grp_nm_2,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_1 ) AS user_id,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_2 ) AS user_id2,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_3 ) AS user_id3,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_4 ) AS user_id4,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_5 ) AS user_id5,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_6 ) AS user_id6,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_7 ) AS user_id7,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_8 ) AS user_id8,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_9 ) AS user_id9,
+		( SELECT user_id FROM $SCHEMA$.EZ_USER WHERE user_cd = tb1.user_cd_10 ) AS user_id10,
+		jobSchedGb, data_center
+		FROM $SCHEMA$.EZ_JOB_MAPPER tb1 WHERE data_center =  #data_center# ) t2
+		  on t.job_name = t2.job
+	  where 1=1
+	]]>
+		<isNotEmpty prepend="and" property="p_severity">
+			severity = #p_severity#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="data_center">
+			t2.data_center = #data_center#
+			and t.data_center = ( CASE WHEN INSTR(#data_center#, ',') > 0
+									THEN SUBSTR(#data_center#, INSTR(#data_center#, ',')+1, LENGTH(#data_center#))
+							 	   ELSE #data_center# END )
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="p_search_text">
+			<isEqual property="p_search_gubun" compareValue="user_nm">
+				(
+				t2.user_nm like '%'||#p_search_text#||'%' or t2.user_id = #p_search_text#
+				or t2.user_nm2 like '%'||#p_search_text#||'%' or t2.user_id2 = #p_search_text#
+				or t2.user_nm3 like '%'||#p_search_text#||'%' or t2.user_id3 = #p_search_text#
+				or t2.user_nm4 like '%'||#p_search_text#||'%' or t2.user_id4 = #p_search_text#
+				or t2.user_nm5 like '%'||#p_search_text#||'%' or t2.user_id5 = #p_search_text#
+				or t2.user_nm6 like '%'||#p_search_text#||'%' or t2.user_id6 = #p_search_text#
+				or t2.user_nm7 like '%'||#p_search_text#||'%' or t2.user_id7 = #p_search_text#
+				or t2.user_nm8 like '%'||#p_search_text#||'%' or t2.user_id8 = #p_search_text#
+				or t2.user_nm9 like '%'||#p_search_text#||'%' or t2.user_id9 = #p_search_text#
+				or t2.user_nm10 like '%'||#p_search_text#||'%' or t2.user_id10 = #p_search_text#
+				)
+			</isEqual>
+			<isEqual property="p_search_gubun" compareValue="job_name">
+				UPPER(job_name) like UPPER('%'||#p_search_text#||'%')
+			</isEqual>
+		</isNotEmpty>
+
+		<!-- alarm 필드에 테이블 없음 -->
+		<!-- <isNotEmpty prepend="and" property="p_sched_table">
+			sched_table in ($p_sched_table$)
+		</isNotEmpty> -->
+		<isNotEmpty prepend="and" property="p_application_of_def">
+			application in (#p_application_of_def#)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="p_group_name_of_def">
+			group_name = #p_group_name_of_def#
+		</isNotEmpty>
+
+		<isNotEmpty property="p_from_odate">
+			and TO_CHAR(t.host_time, 'yyyymmdd')  >= #p_from_odate#
+		</isNotEmpty>
+		<isNotEmpty property="p_to_odate">
+			and TO_CHAR(t.host_time, 'yyyymmdd') <![CDATA[ <= ]]> #p_to_odate#
+		</isNotEmpty>
+
+			<!-- and t.message != 'Ended not OK' -->
+	</sql>
+
+	<select id="alertListCnt" resultClass="CommonBean" parameterClass="java.util.Map">
+	/* ORACLE_A > alertListCnt */
+	<![CDATA[
+		SELECT count(*) as total_count
+	]]>
+		<include refid="alertListInc" />
+
+	</select>
+
+	<select id="alertList" resultClass="AlertBean" parameterClass="java.util.Map">
+	/* ORACLE_A > alertList */
+	<![CDATA[
+		SELECT * FROM(
+			SELECT row_number() over(order by serial DESC) as row_num, TTT.* FROM(
+
+		select
+			/*+ INDEX_ASC (t, UK_ALARM_0) */
+			memname
+			,application
+			,group_name
+			,message
+			,handled
+			,(case when handled = 2 then 'Handled' when handled = 1 then 'Noticed' else 'Not Noticed' end ) as handled_name
+			,job_name
+			,severity
+			,order_id
+			,t.user_id
+			,node_id
+			,TO_CHAR(host_time,'YYYY/MM/DD HH24:MI:SS') AS host_time
+			,changed_by
+			,TO_CHAR(upd_time,'YYYY/MM/DD HH24:MI:SS') AS upd_time
+			,notes
+			,t.data_center
+			,serial
+			,type
+			,closed_from_em
+			,ticket_number
+			,run_counter
+			,t2.user_nm
+	]]>
+		<include refid="alertListInc" />
+		order by serial DESC
+
+			)TTT
+		) tb1
+
+	</select>
+
+	<!-- alert -->
+	<select id="alert" resultClass="AlertBean" parameterClass="java.util.Map">
+	/* ORACLE_A > alert */
+	<![CDATA[
+
+		select
+			memname
+			,application
+			,group_name
+			,message
+			,handled
+			,(case when handled = 2 then 'Handled' when handled = 1 then 'Noticed' else 'Not Noticed' end ) as handled_name
+			,job_name
+			,severity
+			,order_id
+			,user_id
+			,node_id
+			,TO_CHAR(host_time,'YYYY/MM/DD HH24:MI:SS') AS host_time
+			,changed_by
+			,TO_CHAR(upd_time,'YYYY/MM/DD HH24:MI:SS') AS upd_time
+			,notes
+			,data_center
+			,serial
+			,type
+			,closed_from_em
+			,ticket_number
+			,run_counter
+		from alarm t
+		where 1=1
+	]]>
+		and serial = #alert_id#
+
+	</select>
+
+	<select id="alertLastSerial" resultClass="CommonBean" parameterClass="java.util.Map">
+	/* ORACLE_A > alertLastSerial */
+		<!-- SELECT nvl(MAX(serial), 0) AS total_count FROM ALARM WHERE severity = 'V' -->
+
+		SELECT nvl(MAX(serial), 0) AS total_count
+
+		<include refid="alertListInc" />
+
+	</select>
+
+	<!-- alertErrorList -->
+	<sql id="alertErrorListInc">
+	/* ORACLE_A > alertErrorListInc */
+		  FROM $SCHEMA$.EZ_ALARM a 
+		       LEFT OUTER JOIN $SCHEMA$.EZ_USER c ON a.user_cd = c.user_cd
+		       LEFT OUTER JOIN $SCHEMA$.EZ_DEPT d ON c.dept_cd = d.dept_cd
+		       LEFT OUTER JOIN $SCHEMA$.EZ_DUTY e ON c.duty_cd = e.duty_cd
+		  	   , $SCHEMA$.EZ_JOB_MAPPER b
+		 WHERE a.job_name = b.job
+		 
+		    <!--AND a.message = 'Ended not OK' -->
+		    AND ( a.del_yn != 'Y' OR a.del_yn IS NULL )
+<!-- 		    AND a.application != 'BMC-Script' -->
+
+		<isNotEmpty property="p_hold_yn" prepend="AND">
+			a.cyclic != '1'
+		</isNotEmpty>
+
+		<isNotEqual property="op_gubun" compareValue="op">
+			<isNotEmpty property="p_from_odate">
+				<isNotEmpty property="p_to_odate">
+				and TO_CHAR(a.host_time, 'yyyymmdd')  >= trim(#p_from_odate#)
+				</isNotEmpty>
+				<isEmpty property="p_to_odate">
+				and TO_CHAR(a.host_time, 'yyyymmdd') = trim(#p_from_odate#)
+				</isEmpty>
+			</isNotEmpty>
+			<isNotEmpty property="p_to_odate">
+				and a.host_time <![CDATA[ <= ]]> TO_DATE(#p_to_odate#||'235959', 'yyyymmddhh24miss')
+			</isNotEmpty>
+		</isNotEqual>
+		<isEqual property="op_gubun" compareValue="op">
+			<isEqual property="date_gubun" compareValue="hostTime">
+				<isNotEmpty property="p_from_odate">
+					<isNotEmpty property="p_to_odate">
+					and TO_CHAR(a.host_time, 'yyyymmdd')  >= trim(#p_from_odate#)
+					</isNotEmpty>
+					<isEmpty property="p_to_odate">
+					and TO_CHAR(a.host_time, 'yyyymmdd') = trim(#p_from_odate#)
+					</isEmpty>
+				</isNotEmpty>
+				<isNotEmpty property="p_to_odate">
+					and TO_CHAR(a.host_time, 'yyyymmdd') <![CDATA[ <= ]]> trim(#p_to_odate#)
+				</isNotEmpty>		
+			</isEqual>
+			
+			<isEqual property="date_gubun" compareValue="odate">
+				<isNotEmpty property="p_from_odate">
+					<isNotEmpty property="p_to_odate">
+					AND a.odate >= REPLACE(SUBSTR(#p_from_odate#, 3, 8), '/', '')
+					</isNotEmpty>
+					<isEmpty property="p_to_odate">
+					AND a.odate = REPLACE(SUBSTR(#p_from_odate#, 3, 8), '/', '')
+					</isEmpty>
+				</isNotEmpty>
+				<isNotEmpty property="p_to_odate">
+					AND a.odate <![CDATA[ <= ]]> REPLACE(SUBSTR(#p_to_odate#, 3, 8), '/', '')
+				</isNotEmpty>		
+			</isEqual>
+		</isEqual>
+		<!-- ODATE -->
+		<isNotEmpty property="p_s_odate">
+			AND a.odate >= REPLACE(SUBSTR(#p_s_odate#, 3, 8), '/', '')
+		</isNotEmpty>
+		<isNotEmpty property="p_e_odate">
+			AND a.odate <![CDATA[ <= ]]> REPLACE(SUBSTR(#p_e_odate#, 3, 8), '/', '')
+		</isNotEmpty>
+
+		<isNotEmpty prepend="and" property="data_center">
+			a.data_center = #data_center#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="and" property="p_sched_table">
+			a.order_table in
+			<iterate property="p_search_text_folder_list" open="(" close=")" conjunction=",">
+				#p_search_text_folder_list[]# 
+			</iterate>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="p_application_of_def">
+<!-- 			a.application in ($p_application_of_def$) -->
+			a.application = #p_application_of_def#
+		</isNotEmpty>
+		<!--<isNotEmpty prepend="and" property="p_application_of_def_text">
+			application = #p_application_of_def_text#
+		</isNotEmpty>-->
+		<!-- 복수 어플리케이션 검색 및 제외(23.03.29 신한캐피탈요건) -->
+		<isNotEmpty prepend="and" property="p_application_of_def_text" open="(" close=")">
+			<isEqual property="p_chk_app" compareValue="N">
+
+				<iterate property="p_search_text_list" conjunction="OR">
+					UPPER(a.application) = UPPER(#p_search_text_list[]#)
+				</iterate>
+			</isEqual>
+			<isEqual property="p_chk_app" compareValue="Y">
+				<iterate property="p_search_text_list" conjunction="AND">
+					UPPER(a.application) != UPPER(#p_search_text_list[]#)
+				</iterate>
+			</isEqual>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="p_group_name_of_def">
+			a.group_name = #p_group_name_of_def#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="user_cd">
+			<!--a.user_cd = #user_cd#-->
+		</isNotEmpty>
+		<isNotEmpty property="p_search_action_date">
+			and TO_CHAR(a.action_date, 'yyyy/mm/dd') = #p_search_action_date#
+		</isNotEmpty>
+
+		<isEqual property="re_yn" compareValue="N">
+			and (case when a.error_gubun='S58' then 'N' else 'Y' end)  = 'Y'
+		</isEqual>
+
+		<isEqual property="gubun" compareValue="udt">
+			<isNotEmpty property="p_alarm_cd">
+				and alarm_cd = $p_alarm_cd$
+			</isNotEmpty>
+		</isEqual>
+
+		<isNotEmpty property="p_mcode_nm" prepend="AND">
+			b.mcode_nm = #p_mcode_nm#
+		</isNotEmpty>
+		<isNotEmpty property="p_mcode_nm" prepend="AND">
+			b.scode_nm in ($p_scode_nm$)
+		</isNotEmpty>
+		<isNotEmpty property="p_message" prepend="AND">
+			upper(a.message) = upper(#p_message#)
+		</isNotEmpty>
+<!-- 		<isNotEmpty property="p_hold_yn" prepend="AND">	 -->
+<!-- 			(f.cyclic != '1' -->
+<!-- 			or g.cyclic != '1') -->
+<!-- 		</isNotEmpty> -->
+		<!-- 일반 사용자는 담당하는 작업만 조회 -->
+		<!-- M74: 오류관리 조회 계정에 등록되어 있으면 모두 조회 -->
+		<!-- 신한캐피탈 요건 : 오류 발생 작업이 별로 없어서 모든 사용자의 오류 노출 (2023.05.04. 강명준) -->
+		<!-- <isNotEqual property="s_user_gb" compareValue="99">
+			AND CASE WHEN (select count(*)
+	 					     from $SCHEMA$.ez_scode
+	 					    where mcode_cd = 'M74'
+	 					      and scode_nm = #s_user_id#) > 0 THEN 1 = 1
+				ELSE a.user_cd =  $s_user_cd$ END
+		</isNotEqual> -->
+
+		<isNotEmpty property="S_USER_CD">
+			<!-- 			AND a.message = 'Ended not OK'	 -->
+			AND (   b.user_cd_1  = $S_USER_CD$
+				 OR b.user_cd_2  = $S_USER_CD$
+				 OR b.user_cd_3  = $S_USER_CD$
+				 OR b.user_cd_4  = $S_USER_CD$
+				 OR b.user_cd_5  = $S_USER_CD$
+				 OR b.user_cd_6  = $S_USER_CD$
+				 OR b.user_cd_7  = $S_USER_CD$
+				 OR b.user_cd_8  = $S_USER_CD$
+				 OR b.user_cd_9  = $S_USER_CD$
+				 OR b.user_cd_10 = $S_USER_CD$)
+		</isNotEmpty>
+
+		<!-- 		<isNotEmpty property="odate_yn">	 -->
+		<!-- 			AND a.odate IS NOT null -->
+		<!-- 		</isNotEmpty> -->
+
+	</sql>
+
+	<select id="alertErrorListCnt" resultClass="CommonBean" parameterClass="java.util.Map">
+	/* ORACLE_A > alertErrorListCnt */
+		SELECT
+			 count(*) as total_cnt
+			  ,to_char(to_date(min(tb1.host_time),'YYYY/MM/DD HH24:MI:SS'),'yyyymmdd') AS from_hostTime
+			  ,to_char(to_date(max(tb1.odate)),'yyyymmdd')  AS from_odate
+			  FROM 	(
+		  		SELECT row_number() over(ORDER BY ttt.host_time DESC) as row_num, TTT.*
+		  		  FROM	(
+						SELECT a.alarm_cd, a.data_center, TO_CHAR(a.host_time, 'YYYY/MM/DD HH24:MI:SS') AS host_time,
+						       a.application, a.group_name, a.job_name, a.memname, a.odate,
+						       <!-- (a.run_counter+1) as run_counter, -->
+						       a.run_counter as run_counter,
+							   a.description, a.user_cd, c.user_nm, c.user_id, d.dept_nm, e.duty_nm,
+						       TO_CHAR(a.action_date, 'YYYY/MM/DD') AS action_date,
+						       a.action_yn, a.recur_yn, a.error_gubun, a.error_description, a.solution_description,a.action_gubun,
+						       ( SELECT scode_nm FROM $SCHEMA$.EZ_SCODE WHERE scode_cd = a.error_gubun ) AS error_gubun_nm,
+						       TO_CHAR((CASE WHEN TO_CHAR(a.host_time, 'HH24') <![CDATA[ < ]]> '08' THEN a.host_time - (interval '1' day) ELSE a.host_time END), 'MM') AS host_time_mm,
+						       TO_CHAR((CASE WHEN TO_CHAR(a.host_time, 'HH24') <![CDATA[ < ]]> '08' THEN a.host_time - (interval '1' day) ELSE a.host_time END), 'DD') AS host_time_dd,
+						       TO_CHAR((CASE WHEN TO_CHAR(a.host_time, 'HH24') <![CDATA[ < ]]> '08' THEN a.host_time - (interval '1' day) ELSE a.host_time END), 'YYYY-MM-DD') AS host_time2,
+						       TO_CHAR(a.update_time, 'YYYY/MM/DD HH24:MI:SS') AS update_time,
+						       ( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = a.update_user_cd ) AS update_user_nm,
+						       a.order_id, a.node_id,a.message,
+								b.user_cd_1 as user_cd1, b.user_cd_2 as user_cd2, b.user_cd_3 as user_cd3, b.user_cd_4 as user_cd4, b.user_cd_5 as user_cd5,
+								b.user_cd_6 as user_cd6, b.user_cd_7 as user_cd7, b.user_cd_8 as user_cd8, b.user_cd_9 as user_cd9, b.user_cd_10 as user_cd10,
+								b.grp_cd_1 as grp_cd1, b.grp_cd_2 as grp_cd2,
+						        (select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_1) as user_nm_1,
+						        (select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_2) as user_nm_2,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_3) as user_nm_3,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_4) as user_nm_4,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_5) as user_nm_5,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_6) as user_nm_6,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_7) as user_nm_7,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_8) as user_nm_8,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_9) as user_nm_9,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_10) as user_nm_10,
+								( SELECT group_line_grp_nm FROM $SCHEMA$.EZ_GROUP_APPROVAL_GROUP WHERE group_line_grp_cd = b.grp_cd_1 ) AS grp_nm1,
+								( SELECT group_line_grp_nm FROM $SCHEMA$.EZ_GROUP_APPROVAL_GROUP WHERE group_line_grp_cd = b.grp_cd_2 ) AS grp_nm2,
+
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_1) as user_id_1,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_2) as user_id_2,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_3) as user_id_3,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_4) as user_id_4,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_5) as user_id_5,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_6) as user_id_6,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_7) as user_id_7,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_8) as user_id_8,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_9) as user_id_9,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_10) as user_id_10,
+
+						        (select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_1) user_nm1,
+						        (select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_2) user_nm2,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_3) user_nm3,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_4) user_nm4,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_5) user_nm5,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_6) user_nm6,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_7) user_nm7,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_8) user_nm8,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_9) user_nm9,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_10) user_nm10,
+
+						       ( CASE WHEN INSTR(a.data_center, ',') > 0
+				   	   				   THEN (SELECT scode_nm FROM $SCHEMA$.EZ_SCODE WHERE scode_cd = SUBSTR(a.data_center, 1, INSTR(a.data_center, ',')-1))
+				      				   ELSE a.data_center END ) AS data_center_name,
+				      		   	(
+				      		   	<iterate property="data_center_items" conjunction="UNION ALL">
+					      		   	select
+					      		   	case WHEN b.DELETE_FLAG='1' THEN 'Deleted'
+					                WHEN  RTRIM(b.STATE) like 'Held%' THEN 'Held'
+
+					               ELSE b.STATUS END AS state_result
+									from $data_center_items[].active_net_name$JOB b WHERE b.order_id = a.order_id AND b.job_name = a.job_name
+								</iterate>
+								) as state_result,
+								(
+								<iterate property="data_center_items" conjunction="UNION ALL">
+								select case WHEN RTRIM(b.STATE) like 'Held%' THEN 'Y' ELSE 'N' END AS holdflag from $data_center_items[].active_net_name$JOB b WHERE b.order_id = a.order_id AND b.job_name = a.job_name
+								</iterate>
+								) as holdflag,
+								(
+								<iterate property="data_center_items" conjunction="UNION ALL">
+								select
+								CASE WHEN b.status = 'Wait User' THEN 'WAIT'
+			      				WHEN b.status = 'Wait Condition' THEN 'WAIT'
+			      				WHEN b.status = 'Wait Resource' THEN 'WAIT'
+			      				WHEN b.status = 'Wait Host' THEN 'WAIT'
+			      				WHEN b.status = 'Executing' THEN 'RUNNING'
+			      				WHEN b.status = 'Ended OK' THEN 'SUCCESS'
+							    WHEN b.status = 'Ended Not OK' THEN 'FAIL'
+							    ELSE 'ETC'  END AS state_result2
+								from $data_center_items[].active_net_name$JOB b WHERE b.order_id = a.order_id AND b.job_name = a.job_name
+								</iterate>
+								) as state_result2
+								, b.jobschedgb
+
+								, (case when (select user_daily from def_tables where sched_table = a.order_table and data_center = #data_center# ) = 'SYSTEM' then 'Y' else 'N' end) as user_daily_yn
+								, a.order_table
+								, TO_CHAR(a.confirm_time, 'YYYY/MM/DD HH24:MI:SS') AS confirm_time
+						        , ( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = a.confirm_user_cd ) AS confirm_user_nm
+						        , confirm_yn
+								,(CASE WHEN (SELECT t1.state_cd FROM $SCHEMA$.ez_doc_master t1,
+																	(SELECT t2.alarm_cd, MAX(CASE WHEN t2.main_doc_cd IS NULL THEN t2.doc_cd ELSE t2.main_doc_cd END) AS max_doc_cd
+																						FROM $SCHEMA$.ez_doc_10 t2
+																						GROUP BY t2.alarm_cd) t2
+																	WHERE t1.del_yn = 'N'
+																		AND t2.alarm_cd = a.alarm_cd
+																		AND t1.doc_cd = t2.max_doc_cd)	IN ('01', '02') THEN 'Y'	ELSE 'N' end) as approval_yn
+
+						<include refid="alertErrorListInc" />
+		
+						<isNotEmpty prepend="and" property="top_menu">
+					  		a.host_time > trunc(sysdate-7)
+					  	</isNotEmpty>
+		
+
+						 ORDER BY a.host_time DESC
+
+					  	)TTT
+					  	WHERE 1=1
+					  	<isNotEmpty prepend="and" property="p_critical_yn">
+					  		critical = #p_critical_yn#
+					  	</isNotEmpty>
+
+				) tb1
+				WHERE 1=1
+
+				AND (UPPER(MESSAGE) != 'ENDED OK')
+
+				<!-- 조회조건 담당자/작업 정보 분리 22.08.25 김은희 -->
+				<isNotEmpty prepend="and" property="p_search_text">
+					<isEqual property="p_search_gubun" compareValue="user_nm">
+						(
+						user_nm_1 like '%'||#p_search_text#||'%' or user_id_1 = #p_search_text#
+						or user_nm_2 like '%'||#p_search_text#||'%' or user_id_2 = #p_search_text#
+						or user_nm_3 like '%'||#p_search_text#||'%' or user_id_3 = #p_search_text#
+						or user_nm_4 like '%'||#p_search_text#||'%' or user_id_4 = #p_search_text#
+						or user_nm_5 like '%'||#p_search_text#||'%' or user_id_5 = #p_search_text#
+						or user_nm_6 like '%'||#p_search_text#||'%' or user_id_6 = #p_search_text#
+						or user_nm_7 like '%'||#p_search_text#||'%' or user_id_7 = #p_search_text#
+						or user_nm_8 like '%'||#p_search_text#||'%' or user_id_8 = #p_search_text#
+						or user_nm_9 like '%'||#p_search_text#||'%' or user_id_9 = #p_search_text#
+						or user_nm_10 like '%'||#p_search_text#||'%' or user_id_10 = #p_search_text#
+						)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm1">
+						(user_nm like '%'||#p_search_text#||'%' or user_id = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm2">
+						(user_nm_2 like '%'||#p_search_text#||'%' or user_id_2 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm3">
+						(user_nm_3 like '%'||#p_search_text#||'%' or user_id_3 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm4">
+						(user_nm_4 like '%'||#p_search_text#||'%' or user_id_4 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm5">
+						(user_nm_5 like '%'||#p_search_text#||'%' or user_id_5 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm6">
+						(user_nm_6 like '%'||#p_search_text#||'%' or user_id_6 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm7">
+						(user_nm_7 like '%'||#p_search_text#||'%' or user_id_7 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm8">
+						(user_nm_8 like '%'||#p_search_text#||'%' or user_id_8 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm9">
+						(user_nm_9 like '%'||#p_search_text#||'%' or user_id_9 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm10">
+						(user_nm_10 like '%'||#p_search_text#||'%' or user_id_10 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="grp_nm1">
+						(grp_nm_1 like '%'||#p_search_text#||'%' )
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="grp_nm2">
+						(grp_nm_2 like '%'||#p_search_text#||'%' )
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="job_name">
+						UPPER(job_name) like UPPER('%'||#p_search_text#||'%')
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="description">
+						description like '%'||#p_search_text#||'%'
+					</isEqual>
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="p_search_text2">
+					<!--<isEqual property="p_search_gubun2" compareValue="job_name">
+									UPPER(job_name) like UPPER('%'||#p_search_text2#||'%')
+								</isEqual>-->
+					<!-- 작업명 다중 검색 -->
+					<isEqual property="p_search_gubun2" compareValue="job_name">
+						<isNotEmpty property="p_search_text2" open="(" close=")">
+							<iterate property="p_search_job_name_list" conjunction="OR">
+								UPPER(job_name) like UPPER('%'||#p_search_job_name_list[]#||'%')
+							</iterate>
+						</isNotEmpty>
+					</isEqual>
+					<isEqual property="p_search_gubun2" compareValue="error_description">
+						error_description like '%'||#p_search_text2#||'%'
+					</isEqual>
+				</isNotEmpty>
+				<isNotEmpty property="p_search_approval_yn">
+					<isEqual property="p_search_approval_yn" compareValue="Y">
+						and approval_yn = 'Y'
+					</isEqual>
+					<isEqual property="p_search_approval_yn" compareValue="N">
+						and (approval_yn = 'N' or approval_yn is null)
+					</isEqual>
+				</isNotEmpty>
+				<isNotEmpty property="p_search_action_yn">
+					<isEqual property="p_search_action_yn" compareValue="Y">
+						and action_yn = 'Y'
+					</isEqual>
+					<isEqual property="p_search_action_yn" compareValue="N">
+						and (action_yn = 'N' OR action_yn IS NULL)
+					</isEqual>
+				</isNotEmpty>
+
+				<isEqual property="error_only" compareValue="Y">
+					AND UPPER(MESSAGE) = 'ENDED NOT OK'
+				</isEqual>
+
+	</select>
+
+	<select id="alertErrorList" resultClass="AlertBean" parameterClass="java.util.Map">
+	/* ORACLE_A > alertErrorList */
+		SELECT *
+		  FROM 	(
+		  		SELECT row_number() over(ORDER BY ttt.host_time DESC) as row_num, TTT.*
+		  		  FROM	(
+						SELECT a.alarm_cd, a.data_center, TO_CHAR(a.host_time, 'YYYY/MM/DD HH24:MI:SS') AS host_time,
+						       a.application, a.group_name, a.job_name, a.memname, a.odate, a.cyclic,
+						       <!-- (a.run_counter+1) as run_counter, -->
+						       a.run_counter as run_counter,
+							   a.description, a.user_cd, c.user_nm, c.user_id, d.dept_nm, e.duty_nm,
+						       TO_CHAR(a.action_date, 'YYYY/MM/DD') AS action_date,
+						       a.action_yn, a.recur_yn, a.error_gubun, a.error_description, a.solution_description,a.action_gubun,
+						       ( SELECT scode_nm FROM $SCHEMA$.EZ_SCODE WHERE scode_cd = a.error_gubun ) AS error_gubun_nm,
+						       TO_CHAR((CASE WHEN TO_CHAR(a.host_time, 'HH24') <![CDATA[ < ]]> '08' THEN a.host_time - (interval '1' day) ELSE a.host_time END), 'MM') AS host_time_mm,
+						       TO_CHAR((CASE WHEN TO_CHAR(a.host_time, 'HH24') <![CDATA[ < ]]> '08' THEN a.host_time - (interval '1' day) ELSE a.host_time END), 'DD') AS host_time_dd,
+						       TO_CHAR((CASE WHEN TO_CHAR(a.host_time, 'HH24') <![CDATA[ < ]]> '08' THEN a.host_time - (interval '1' day) ELSE a.host_time END), 'YYYY-MM-DD') AS host_time2,
+						       TO_CHAR(a.update_time, 'YYYY/MM/DD HH24:MI:SS') AS update_time,
+						       ( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = a.update_user_cd ) AS update_user_nm,
+						       a.order_id, a.node_id,a.message,
+								b.user_cd_1 as user_cd1, b.user_cd_2 as user_cd2, b.user_cd_3 as user_cd3, b.user_cd_4 as user_cd4, b.user_cd_5 as user_cd5,
+								b.user_cd_6 as user_cd6, b.user_cd_7 as user_cd7, b.user_cd_8 as user_cd8, b.user_cd_9 as user_cd9, b.user_cd_10 as user_cd10,
+								b.grp_cd_1 as grp_cd1, b.grp_cd_2 as grp_cd2,
+						        (select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_1) as user_nm_1,
+						        (select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_2) as user_nm_2,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_3) as user_nm_3,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_4) as user_nm_4,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_5) as user_nm_5,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_6) as user_nm_6,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_7) as user_nm_7,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_8) as user_nm_8,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_9) as user_nm_9,
+								(select user_nm from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_10) as user_nm_10,
+								( SELECT group_line_grp_nm FROM $SCHEMA$.EZ_GROUP_APPROVAL_GROUP WHERE group_line_grp_cd = b.grp_cd_1 ) AS grp_nm1,
+								( SELECT group_line_grp_nm FROM $SCHEMA$.EZ_GROUP_APPROVAL_GROUP WHERE group_line_grp_cd = b.grp_cd_2 ) AS grp_nm2,
+
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_1) as user_id_1,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_2) as user_id_2,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_3) as user_id_3,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_4) as user_id_4,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_5) as user_id_5,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_6) as user_id_6,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_7) as user_id_7,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_8) as user_id_8,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_9) as user_id_9,
+								(select user_id from $SCHEMA$.ez_user a where a.user_cd = b.user_cd_10) as user_id_10,
+
+						        (select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_1) user_nm1,
+						        (select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_2) user_nm2,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_3) user_nm3,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_4) user_nm4,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_5) user_nm5,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_6) user_nm6,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_7) user_nm7,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_8) user_nm8,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_9) user_nm9,
+								(select user_nm||' ['||(select dept_nm from $SCHEMA$.ez_dept a where a.dept_cd = tb1.dept_cd)||'] ['||(select duty_nm from $SCHEMA$.ez_duty a where a.duty_cd = tb1.duty_cd)||'] ['||user_hp||'] ['||user_tel||']' from $SCHEMA$.ez_user tb1 where tb1.user_cd = b.user_cd_10) user_nm10,
+
+								(SELECT MAX(CASE WHEN critical = '1' THEN 'Y' ELSE 'N' END) FROM DEF_JOB WHERE job_name = a.job_name) AS critical
+						       ,( CASE WHEN INSTR(a.data_center, ',') > 0
+				   	   				   THEN (SELECT scode_nm FROM $SCHEMA$.EZ_SCODE WHERE scode_cd = SUBSTR(a.data_center, 1, INSTR(a.data_center, ',')-1))
+				      				   ELSE a.data_center END ) AS data_center_name,
+				      		   	(
+				      		   	<iterate property="data_center_items" conjunction="UNION ALL">
+					      		   	select
+					      		   	case WHEN b.DELETE_FLAG='1' THEN 'Deleted'
+					                WHEN  RTRIM(b.STATE) like 'Held%' THEN 'Held'
+
+					               ELSE b.STATUS END AS state_result
+									from $data_center_items[].active_net_name$JOB b WHERE b.order_id = a.order_id AND b.job_name = a.job_name
+								</iterate>
+								) as state_result,
+								(
+								<iterate property="data_center_items" conjunction="UNION ALL">
+								select case WHEN RTRIM(b.STATE) like 'Held%' THEN 'Y' ELSE 'N' END AS holdflag from $data_center_items[].active_net_name$JOB b WHERE b.order_id = a.order_id AND b.job_name = a.job_name
+								</iterate>
+								) as holdflag,
+								(
+								<iterate property="data_center_items" conjunction="UNION ALL">
+								select
+								CASE WHEN b.status = 'Wait User' THEN 'WAIT'
+			      				WHEN b.status = 'Wait Condition' THEN 'WAIT'
+			      				WHEN b.status = 'Wait Resource' THEN 'WAIT'
+			      				WHEN b.status = 'Wait Host' THEN 'WAIT'
+			      				WHEN b.status = 'Executing' THEN 'RUNNING'
+			      				WHEN b.status = 'Ended OK' THEN 'SUCCESS'
+							    WHEN b.status = 'Ended Not OK' THEN 'FAIL'
+							    ELSE 'ETC'  END AS state_result2
+								from $data_center_items[].active_net_name$JOB b WHERE b.order_id = a.order_id AND b.job_name = a.job_name
+								</iterate>
+								) as state_result2
+								, b.jobschedgb
+
+								, (case when (select user_daily from def_tables where sched_table = a.order_table) = 'SYSTEM' then 'Y' else 'N' end) as user_daily_yn
+								, a.order_table 
+								, TO_CHAR(a.confirm_time, 'YYYY/MM/DD HH24:MI:SS') AS confirm_time
+						        , ( SELECT user_nm FROM $SCHEMA$.EZ_USER WHERE user_cd = a.confirm_user_cd ) AS confirm_user_nm
+						        , confirm_yn
+								,(CASE WHEN (SELECT t1.state_cd FROM $SCHEMA$.ez_doc_master t1,
+																			(SELECT t2.alarm_cd, MAX(CASE WHEN t2.main_doc_cd IS NULL THEN t2.doc_cd ELSE t2.main_doc_cd END) AS max_doc_cd
+																				FROM $SCHEMA$.ez_doc_10 t2
+																				GROUP BY t2.alarm_cd) t2
+																		WHERE t1.del_yn = 'N'
+																		AND t2.alarm_cd = a.alarm_cd
+																		AND t1.doc_cd = t2.max_doc_cd)	IN ('01', '02') THEN 'Y'	ELSE 'N' end) as approval_yn
+								,(case when (select f.task_type from DEF_JOB f where f.job_name = REGEXP_SUBSTR(a.order_table, '[^/]+', 1, 1)) = 'SMART Table' then 'Y' else 'N' end) as smart_job_yn
+
+							<include refid="alertErrorListInc" />
+
+						 ORDER BY a.host_time DESC
+
+					  	)TTT
+				) tb1
+				WHERE 1=1
+
+				AND (UPPER(MESSAGE) != 'ENDED OK')
+
+				<!-- 조회조건 담당자/작업 정보 분리 22.08.25 김은희 -->
+				<isNotEmpty prepend="and" property="p_search_text">
+					<isEqual property="p_search_gubun" compareValue="user_nm">
+						(
+						user_nm_1 like '%'||#p_search_text#||'%' or user_id_1 = #p_search_text#
+						or user_nm_2 like '%'||#p_search_text#||'%' or user_id_2 = #p_search_text#
+						or user_nm_3 like '%'||#p_search_text#||'%' or user_id_3 = #p_search_text#
+						or user_nm_4 like '%'||#p_search_text#||'%' or user_id_4 = #p_search_text#
+						or user_nm_5 like '%'||#p_search_text#||'%' or user_id_5 = #p_search_text#
+						or user_nm_6 like '%'||#p_search_text#||'%' or user_id_6 = #p_search_text#
+						or user_nm_7 like '%'||#p_search_text#||'%' or user_id_7 = #p_search_text#
+						or user_nm_8 like '%'||#p_search_text#||'%' or user_id_8 = #p_search_text#
+						or user_nm_9 like '%'||#p_search_text#||'%' or user_id_9 = #p_search_text#
+						or user_nm_10 like '%'||#p_search_text#||'%' or user_id_10 = #p_search_text#
+						)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm1">
+						(user_nm like '%'||#p_search_text#||'%' or user_id = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm2">
+						(user_nm_2 like '%'||#p_search_text#||'%' or user_id_2 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm3">
+						(user_nm_3 like '%'||#p_search_text#||'%' or user_id_3 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm4">
+						(user_nm_4 like '%'||#p_search_text#||'%' or user_id_4 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm5">
+						(user_nm_5 like '%'||#p_search_text#||'%' or user_id_5 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm6">
+						(user_nm_6 like '%'||#p_search_text#||'%' or user_id_6 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm7">
+						(user_nm_7 like '%'||#p_search_text#||'%' or user_id_7 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm8">
+						(user_nm_8 like '%'||#p_search_text#||'%' or user_id_8 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm9">
+						(user_nm_9 like '%'||#p_search_text#||'%' or user_id_9 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="user_nm10">
+						(user_nm_10 like '%'||#p_search_text#||'%' or user_id_10 = #p_search_text#)
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="grp_nm1">
+						(grp_nm_1 like '%'||#p_search_text#||'%' )
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="grp_nm2">
+						(grp_nm_2 like '%'||#p_search_text#||'%' )
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="job_name">
+						UPPER(job_name) like UPPER('%'||#p_search_text#||'%')
+					</isEqual>
+					<isEqual property="p_search_gubun" compareValue="description">
+						description like '%'||#p_search_text#||'%'
+					</isEqual>
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="p_search_text2">
+					<!--<isEqual property="p_search_gubun2" compareValue="job_name">
+									UPPER(job_name) like UPPER('%'||#p_search_text2#||'%')
+								</isEqual>-->
+					<!-- 작업명 다중 검색 -->
+					<isEqual property="p_search_gubun2" compareValue="job_name">
+						<isNotEmpty property="p_search_text2" open="(" close=")">
+							<iterate property="p_search_job_name_list" conjunction="OR">
+								UPPER(job_name) like UPPER('%'||#p_search_job_name_list[]#||'%')
+							</iterate>
+						</isNotEmpty>
+					</isEqual>
+					<isEqual property="p_search_gubun2" compareValue="description">
+						description like '%'||#p_search_text2#||'%'
+					</isEqual>
+				</isNotEmpty>
+				<isNotEmpty property="p_search_approval_yn">
+					<isEqual property="p_search_approval_yn" compareValue="Y">
+						and approval_yn = 'Y'
+					</isEqual>
+					<isEqual property="p_search_approval_yn" compareValue="N">
+						and (approval_yn = 'N' or approval_yn is null)
+					</isEqual>
+				</isNotEmpty>
+				<isNotEmpty property="p_search_action_yn">
+					<isEqual property="p_search_action_yn" compareValue="Y">
+						and action_yn = 'Y'
+					</isEqual>
+					<isEqual property="p_search_action_yn" compareValue="N">
+						and (action_yn = 'N' OR action_yn IS NULL)
+					</isEqual>
+				</isNotEmpty>
+				<!--
+				테이블 권한이 매핑되어 있으므로 담당자 본인 것만 조회되게 하는 로직은 제거 (2020.07.29 강명준)
+				<isNotEmpty prepend="and" property="user_cd">
+					tb1.user_cd = $user_cd$
+				</isNotEmpty>
+				-->
+
+				<isEqual property="error_only" compareValue="Y">
+					AND UPPER(MESSAGE) = 'ENDED NOT OK'
+				</isEqual>
+
+				<isNotEmpty property="pagingNum">
+					OFFSET $startRowNum$ ROWS FETCH FIRST $pagingNum$ ROWS ONLY
+				</isNotEmpty>
+
+	</select>
+
+	<!-- spAlarmPrc -->
+	<parameterMap id="spAlarmPrcMap" class="java.util.Map">
+		<parameter property="r_code" 				javaType="java.lang.String" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="r_msg" 				javaType="java.lang.String" jdbcType="VARCHAR" mode="OUT" />
+
+		<parameter property="flag" 					javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="alarm_cd" 				javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="user_cd" 				javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="action_yn" 			javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="action_gubun" 			javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="action_date" 			javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recur_yn" 				javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="error_gubun" 			javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="error_description" 	javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="solution_description" 	javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="confirm_yn" 			javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+
+		<parameter property="s_user_cd" 			javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+
+	</parameterMap>
+	<procedure id="spAlarmPrc" resultClass="java.util.List" parameterMap="spAlarmPrcMap">
+		{ call $SCHEMA$.SP_EZ_ALARM_PRC	( 	?, ?, ?, ?, ?,
+											?, ?, ?, ?, ?,
+											?, ?, ?, ?
+							  			)
+		}
+	</procedure>
+
+	<!-- jobErrorLogList -->
+	<sql id="jobErrorLogListInc">
+	/* ORACLE_A > jobErrorLogListInc */
+	<![CDATA[
+		    FROM
+				(SELECT 'CM' AS gubun,
+				        CASE WHEN tb1.application LIKE 'INF%' THEN 'info'
+		        			 WHEN tb1.data_center != 'pcorbt2_ctm' THEN 'card'
+		        			 ELSE 'bank' END AS log_gubun,
+		        		CASE WHEN TO_CHAR(tb1.host_time, 'YYYYMMDD') = TO_CHAR(CURRENT_DATE, 'YYYYMMDD') THEN 'real'
+		        		     ELSE 'history' END AS day_gubun,
+		        	    tb1.serial, tb1.job_name, tb1.host_time, tb1.message,
+						tb1.data_center, tb1.application, tb1.group_name, tb1.memname, tb1.order_id, tb1.node_id, run_counter,
+						tb2.user_cd_1 AS user_cd, tb3.user_nm, tb3.user_id,
+						TO_CHAR(tb1.host_time, 'YYYYMMDD') AS end_date
+				  FROM ALARM tb1, $SCHEMA$.EZ_JOB_MAPPER  tb2, $SCHEMA$.EZ_USER tb3
+				 WHERE tb1.job_name = tb2.job(+)
+				   AND tb2.user_cd_1 = tb3.user_cd(+)
+				   AND tb1.message = 'Ended not OK'
+				   AND tb1.serial NOT IN ( SELECT alarm_cd FROM $SCHEMA$.EZ_ALARM )
+
+				UNION ALL
+
+				SELECT 	'EZ' AS gubun,
+		   				CASE WHEN tb1.application LIKE 'INF%' THEN 'info'
+		        			 WHEN tb1.data_center != 'pcorbt2_ctm' THEN 'card'
+		        			 ELSE 'bank' END AS log_gubun,
+		        	    CASE WHEN TO_CHAR(tb1.host_time, 'YYYYMMDD') = TO_CHAR(CURRENT_DATE, 'YYYYMMDD') THEN 'real'
+		        		     ELSE 'history' END AS day_gubun,
+		        		tb1.alarm_cd, tb1.job_name, tb1.host_time, tb1.message,
+						tb1.data_center, tb1.application, tb1.group_name, tb1.memname, tb1.order_id, tb1.node_id, run_counter,
+					    tb2.user_cd_1 AS user_cd, tb3.user_nm, tb3.user_id,
+					   TO_CHAR(tb1.host_time, 'YYYYMMDD') AS end_date
+				  FROM $SCHEMA$.EZ_ALARM tb1, $SCHEMA$.EZ_JOB_MAPPER  tb2, $SCHEMA$.EZ_USER tb3
+				 WHERE tb1.job_name = tb2.job(+)
+				   AND tb2.user_cd_1 = tb3.user_cd(+) ) a
+		   WHERE 1 = 1
+	]]>
+
+		<isNotEmpty property="odate">
+			and TO_CHAR(a.host_time, 'yyyy/mm/dd')  = #odate#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="data_center">
+			a.data_center = #data_center#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="search_text">
+			(case when trim(a.job_name) is not null then job_name else memname end) like ''||#search_text#||'%'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="application">
+			a.application = #application#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="group_name">
+			a.group_name = #group_name#
+		</isNotEmpty>
+
+	</sql>
+
+	<select id="jobErrorLogListCnt" resultClass="CommonBean" parameterClass="java.util.Map">
+	/* ORACLE_A > jobErrorLogListCnt */
+	<![CDATA[
+		SELECT COUNT(*) AS total_count
+	]]>
+		<include refid="jobErrorLogListInc" />
+
+	</select>
+
+	<select id="jobErrorLogList" resultClass="AlertBean" parameterClass="java.util.Map">
+	/* ORACLE_A > jobErrorLogList */
+	<![CDATA[
+		SELECT *
+		  FROM 	(
+		  		SELECT TTT.*
+		  		  FROM	(
+						SELECT 	gubun, log_gubun, day_gubun, serial, job_name, host_time, message,
+						        data_center, application, group_name, memname, order_id, node_id,
+						        run_counter, user_cd, user_nm, user_id, end_date
+	]]>
+
+		<include refid="jobErrorLogListInc" />
+
+						 ORDER BY a.host_time DESC
+
+					  	)TTT
+				) tb1
+
+		<isNotEmpty property="startRowNum">
+			OFFSET #startRowNum# - 1 LIMIT #endRowNum# - #startRowNum# + 1
+		</isNotEmpty>
+
+	</select>
+
+</sqlMap>

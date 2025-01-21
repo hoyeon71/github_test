@@ -1,0 +1,386 @@
+@charset "utf-8";
+
+a:link   { font-family: 굴림,돋움,seoul,arial; font-size: 8pt; text-decoration:none; color:#505050; }
+a:visited { font-family: 굴림,돋움,seoul,arial; font-size: 8pt; text-decoration:none; color:#868686; }
+a:hover  { font-family: 굴림,돋움,seoul,arial; font-size: 8pt; text-decoration:underline; color:#ff9900; }
+
+body {
+	font-family: "돋움";
+	font-size: 11px;
+	margin: 0;
+	color: #686667;
+	
+	scrollbar-face-color: #9EBFE8; 
+	scrollbar-shadow-color: #FFFFFF; 
+	scrollbar-highlight-color: #FFFFFF; 
+	scrollbar-3dlight-color: #9EBFE8; 
+	scrollbar-darkshadow-color: #9EBFE8; 
+	scrollbar-track-color: #FFFFFF; 
+	scrollbar-arrow-color: #FFFFFF;
+}
+
+td {
+	font-family: "돋움";
+	font-size: 8pt;
+	color: #686667;
+}
+
+select {
+	background-color: #f2f4fb;
+	font-family: "돋움";
+	font-size: 13px;
+	color: #4b5d66; 
+}
+
+input {
+	background-color: #f2f4fb; font-family: "돋움"; color: #4b5d66; font-size: 9pt;
+}
+
+textarea {
+	background-color: #f2f4fb; font-family: "돋움"; color: #4b5d66; font-size: 9pt;
+}
+
+
+.td1{
+	background-color:#f1f1f1;
+	font-family: "돋움";
+	font-size: 8pt;
+	color: #686667;
+	font-weight: bold;
+	text-align:center;
+}
+
+.td1_1{
+	background-color:#f1f1f1;
+	font-family: "돋움";
+	font-size: 8pt;
+	color: #686667;
+	font-weight: bold;
+	text-align:center;
+}
+
+.td2{
+	background-color:#ffffff;
+	font-family: "돋움";
+	font-size: 8pt;
+	text-align:left;
+	color: #686667;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.td2_1{
+	background-color:#ffffff;
+	font-family: "돋움";
+	font-size: 8pt;
+	text-align:center;
+	color: #686667;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.td3{
+	background-color:#ffffff;
+	font-family: "돋움";
+	font-size: 9pt;
+	color: #686667;
+	text-align:center;
+}
+
+.td4{
+	font-family: "돋움";
+	font-size: 10pt;
+	color: #686667;
+	font-weight: bold;
+	text-align:center;
+}
+
+.gray_box {
+	font-family: "돋움";
+	font-size: 9pt;
+	color: #787878;
+	text-decoration: none;
+	border: 1px solid #e1e1e1;
+	height: 18px;
+	background-color: #f7f7f7;
+}
+
+<!-- ############# -->
+
+.tbl_status {
+	border: 1px solid #e8e8e8;
+	background-color: #f1f1f1;
+}
+.tbl_menulist {
+	font-family: "돋움";
+	font-size: 11px;
+	color: #4c4c4c;
+	height: 22px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.titleTxt{
+	font-family: "굴림";
+	font-size: 14px;
+	font-weight: bold;
+	color: #686667;
+}
+.loginTxt{
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.tab_line {
+	border-bottom: 1px solid #8f8f8f;
+}
+.tbl_list {
+	background-color: #ffffff;
+	font-family: "돋움";
+	font-size: 11px;
+	color: #686667;
+	text-align: center;
+	height: 25px;
+}
+.tbl_list_bg {
+	background-color: #f2f4fb;
+	font-family: "돋움";
+	font-size: 11px;
+	color: #686667;
+	text-align: center;
+	height: 25px;
+}
+.tbl_list_blue {
+	background-color: #F2CB61;
+	font-family: "돋움";
+	font-size: 11px;
+	color: #686667;
+	text-align: center;
+	height: 25px;
+}
+.tbl_list_title {
+	background-color: #f1f1f1;
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+	color: #595959;
+	text-align: center;
+	height: 30px;
+}
+.tbl_list_title2 {
+	background-color: #f1f1f1;
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+	color: #595959;
+	text-align: center;
+	height: 30px;
+}
+.tab_on {
+	background-color: #595959;
+	background-image: url(../imgs/tab_on.gif);
+	background-repeat: no-repeat;
+	font-family: "돋움";
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	color: #595959;
+	font-size: 11px;
+}
+.tab_off {
+	background-color: #595959;
+	background-image: url(../imgs/tab_off.gif);
+	background-repeat: no-repeat;
+	font-family: "돋움";
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	color: #595959;
+	font-size: 11px;
+}
+.longtab_on {
+	background-color: #595959;
+	background-image: url(/imgs/tab_on_long.jpg);
+	background-repeat: no-repeat;
+	font-family: "돋움";
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	color: #595959;
+	font-size: 11px;
+}
+.longtab_off {
+	background-color: #595959;
+	background-image: url(/imgs/tab_off_long.jpg);
+	background-repeat: no-repeat;
+	font-family: "돋움";
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	color: #595959;
+	font-size: 11px;
+}
+
+.menu_on {
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	background-image: url(../imgs/menu_on.gif);
+	height: 38px;
+	color: #FFFFFF;
+}
+.menu_off {
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	background-image: url(../imgs/menu_off.gif);
+	height: 38px;
+	color: #FFFFFF;
+}
+.txt_frame {
+	color: #FFFFFF;
+	height: 33px;
+}
+
+.menulist {
+	height: 23px;
+	font-family: "돋움";
+	font-size: 11px;
+	text-align: left;
+	color: #4c4c4c;
+	padding-left:12px;
+	padding-right:12px;
+}
+
+.menulist_ov {
+	height: 23px;
+	font-family: "돋움";
+	font-size: 11px;
+	text-align: left;
+	color: #4c4c4c;
+	padding-left:12px;
+	padding-right:12px;
+}
+
+.menulist li {
+	list-style:url(../imgs/icon_menutitle.gif) inside;
+}
+
+.menulist_ov li {
+	list-style:url(../imgs/icon_menutitle_ov.gif) inside;
+}
+
+.txt_title {
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+	color: #595959;
+}
+
+.txt_title2 {
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+	color: #595959;
+}
+
+.txt_title3 {
+	font-family: "돋움";
+	font-size: 14px;
+	font-weight: bold;
+	color: #595959;
+}
+
+.tbl_contents {
+	border: 1px solid #f1f1f1;
+}
+.tbl_contents_title {
+	border: 1px solid #f1f1f1;
+	background-color: #f1f1f1;
+	height: 32px;
+	color: #595959;
+	font-weight: bold;
+	text-align: center;
+}
+
+.loginBody{
+	background: url(../imgs/bg_login_p.gif) top left repeat-x;
+}
+.loginTL{
+	height:25px;
+	width:60px;
+	text-align:center;
+}
+
+.loginTxt{
+	font-family: "돋움";
+	font-size: 11px;
+	font-weight: bold;
+}
+.input_login {
+	font-family: "돋움";
+	color: #3c3c3c;
+	height: 18px;
+	width: 117px;
+	border: 1px solid #a0a0a0;
+	font-size: 14px;
+}
+.Pad5{
+	padding:0px 0px 0px 5px;
+}
+
+
+@media print {
+	.noprint { display: none; }
+}
+
+
+/*--------------------------------------------------------------------------
+Button
+---------------------------------------------------------------------------*/
+
+.btn01_text02 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 20px; width: 50px; background-image:url(/imgs/button/btn01_text02.gif); }
+.btn01_text03 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 20px; width: 50px; background-image:url(/imgs/button/btn01_text03.gif); }
+.btn01_text04 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 20px; width: 62px; background-image:url(/imgs/button/btn01_text04.gif); }
+.btn01_text05 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 20px; width: 74px; background-image:url(/imgs/button/btn01_text05.gif); }
+.btn01_text06 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 20px; width: 86px; background-image:url(/imgs/button/btn01_text06.gif); }
+.btn01_text07 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 20px; width: 98px; background-image:url(/imgs/button/btn01_text07.gif); }
+
+.btn02_text03 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 39px; background-image:url(/imgs/button/btn02_text03.gif); letter-spacing:-1px;}
+.btn02_text04 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 50px; background-image:url(/imgs/button/btn02_text04.gif); letter-spacing:-1px;}
+.btn02_text05 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 61px; background-image:url(/imgs/button/btn02_text05.gif); letter-spacing:-1px;}
+.btn02_text06 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 72px; background-image:url(/imgs/button/btn02_text06.gif); letter-spacing:-1px;}
+.btn02_text07 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 83px; background-image:url(/imgs/button/btn02_text07.gif); letter-spacing:-1px;}
+.btn02_text08 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 94px; background-image:url(/imgs/button/btn02_text08.gif); letter-spacing:-1px;}
+.btn02_text09 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 105px; background-image:url(/imgs/button/btn02_text09.gif); letter-spacing:-1px;}
+.btn02_text10 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 116px; background-image:url(/imgs/button/btn02_text10.gif); letter-spacing:-1px;}
+
+.btn03_text02 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 39px; background-image:url(/imgs/button/btn03_text02.gif); letter-spacing:-1px;}
+.btn03_text04 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#666666; border: #ffffff 0 solid; background-color:#ffffff; font-size:11px; text-align:center;  height: 20px; width: 52px; background-image:url(/imgs/button/btn03_text04.gif); letter-spacing:-1px;}
+
+
+
+.btn04_text02 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 50px; background-image:url(/imgs/button/btn04_text02.gif); }
+.btn04_text03 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 50px; background-image:url(/imgs/button/btn04_text03.gif); }
+.btn04_text04 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 62px; background-image:url(/imgs/button/btn04_text04.gif); }
+.btn04_text05 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 74px; background-image:url(/imgs/button/btn04_text05.gif); }
+.btn04_text06 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 86px; background-image:url(/imgs/button/btn04_text06.gif); }
+.btn04_text07 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 98px; background-image:url(/imgs/button/btn04_text07.gif); }
+.btn04_text08 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 110px; background-image:url(/imgs/button/btn04_text08.gif); }
+.btn04_text09 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 122px; background-image:url(/imgs/button/btn04_text09.gif); }
+.btn04_text10 { margin:0px; cursor: pointer; padding: 3px 0px 0px 1px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center; height: 22px; width: 134px; background-image:url(/imgs/button/btn04_text10.gif); }
+
+
+.btn05_text02 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center;  height: 20px; width: 50px; background-image:url(/imgs/button/btn05_text02.gif); }
+.btn05_text03 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center;  height: 20px; width: 50px; background-image:url(/imgs/button/btn05_text03.gif); }
+.btn05_text04 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center;  height: 20px; width: 62px; background-image:url(/imgs/button/btn05_text04.gif);}
+.btn05_text05 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center;  height: 20px; width: 74px; background-image:url(/imgs/button/btn05_text05.gif); }
+.btn05_text06 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center;  height: 20px; width: 86px; background-image:url(/imgs/button/btn05_text06.gif); }
+.btn05_text07 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center;  height: 20px; width: 98px; background-image:url(/imgs/button/btn05_text07.gif); }
+.btn05_text08 { margin:0px; cursor: pointer; padding: 3px 0px 0px 0px; color:#ffffff; border: #ffffff 0 solid; background-color:#ffffff; font-size:12px; text-align:center;  height: 20px; width: 110px; background-image:url(/imgs/button/btn05_text08.gif);}
+
+

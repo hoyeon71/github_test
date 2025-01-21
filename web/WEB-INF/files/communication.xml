@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<!DOCTYPE configuration SYSTEM "configuration.dtd"[]>
+
+<configuration>
+  <scope name="default">
+    <!--variable name="ListenPort" value="9090-9150" /-->
+    <!--variable name="SSL" value="on" /-->
+
+    <variable name="WebUrl" value="http://ctm:18080" />
+  </scope>
+  <scope name="ClientsDefault">
+    <variable name="WebUrl" value="http://ctm:18080" />
+  </scope>
+
+  <scope name="CMS">
+    <variable name="NumWorkers" value="30" />
+  </scope>
+
+  <scope name="GSR">
+    <variable name="NumWorkers" value="100" />
+  </scope>
+  
+   <scope name="GeneralClientParameters">
+    <variable name="EnvDetectionRequestTimout" value="4" />
+    <variable name="LoginRequestTimout" value="10" />
+  </scope>
+
+</configuration>

@@ -1,0 +1,14 @@
+package com.ghayoun.ezjobs.t.repository;
+
+import java.util.List;
+import java.util.Map;
+
+import com.ghayoun.ezjobs.comm.domain.CommonBean;
+import com.ghayoun.ezjobs.common.util.DefaultServiceException;
+import com.ghayoun.ezjobs.t.domain.*;
+
+public interface EmJobDefinitionDao {
+	
+	
+	public Map prcDefCreateJobs(Map map) throws Exception;
+}

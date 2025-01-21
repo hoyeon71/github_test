@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- ORACLE DB 개발 환경설정 -->
+	<entry key="DB.SCHEMA.ORACLE.D">ezjobs4O</entry>
+	<entry key="jdbc_em.url.ORACLE.D">jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.10.70)(PORT = 1521))) (CONNECT_DATA = (SID = controlm9021)))</entry>
+	<entry key="jdbc_ctm.url.ORACLE.D">jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.10.70)(PORT = 1521))) (CONNECT_DATA = (SID = controlm9021)))</entry>
+
+	<!-- ORACLE DB 테스트 환경설정 -->
+	<entry key="DB.SCHEMA.ORACLE.T">ezjobs4O</entry>
+	<entry key="jdbc_em.url.ORACLE.T">jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.10.70)(PORT = 1521))) (CONNECT_DATA = (SID = controlm9021)))</entry>
+	<entry key="jdbc_ctm.url.ORACLE.T">jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.10.70)(PORT = 1521))) (CONNECT_DATA = (SID = controlm9021)))</entry>
+
+	<!-- ORACLE DB 운영 환경설정 -->
+	<entry key="DB.SCHEMA.ORACLE.P">ezjobs4O</entry>
+	<entry key="jdbc_em.url.ORACLE.P">jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.10.70)(PORT = 1521))) (CONNECT_DATA = (SID = controlm9021)))</entry>
+	<entry key="jdbc_ctm.url.ORACLE.P">jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.10.70)(PORT = 1521))) (CONNECT_DATA = (SID = controlm9021)))</entry>
+
+</properties>

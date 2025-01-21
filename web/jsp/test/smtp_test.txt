@@ -1,0 +1,22 @@
+<%@page import="com.ghayoun.ezjobs.common.util.CommonUtil"%>
+<%@page import="com.ghayoun.ezjobs.common.util.SendMail"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%	
+
+	String strMailContent 	= "";
+	
+	String strJobName 	= "aa";
+	String strDescription 	= "bb";
+	String strSysout 	= "cc";
+	String strOutCond 	= "dd";
+	
+	strMailContent	+= "작업명 : " + strJobName + 		"<br>";
+	strMailContent 	+= "작업 설명 : " + strDescription + 	"<br>";
+	strMailContent 	+= "SYSOUT 내용<br>" + strSysout + 		"<br>";
+	strMailContent 	+= "후행 목록<br>" + strOutCond + 		"<br>";
+
+	int iReturnMessage = SendMail.senderMail("CP234151@goldwing.shinhan.com", "CP234151@goldwing.shinhan.com", "EZJOBS 테스트 발송", strMailContent, "EZJOBS 운영자");
+	out.println("메일 발송 결과 : " + iReturnMessage);
+	
+%>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <!-- ================ FILE Appender ================ -->
+
+    <appender name="FILE_INFO" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${web.root}/WEB-INF/logs/ezjobs_info.log"/>
+        <param name="Append" value="true"/>
+        <param name="Threshold" value="INFO"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="FILE_DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${web.root}/WEB-INF/logs/ezjobs_debug.log"/>
+        <param name="Append" value="true"/>
+        <param name="Threshold" value="DEBUG"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="FILE_ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${web.root}/WEB-INF/logs/ezjobs_error.log"/>
+        <param name="Append" value="true"/>
+        <param name="Threshold" value="ERROR"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- ================ CONSOLE Appender ================ -->
+
+    <appender name="CONSOLE_INFO" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <param name="Threshold" value="INFO"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="CONSOLE_DEBUG" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <param name="Threshold" value="DEBUG"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="CONSOLE_ERROR" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <param name="Threshold" value="ERROR"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="CONSOLE_TRACE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <param name="Threshold" value="TRACE"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- ================ Spring Framework Category ================ -->
+
+    <category name="org.springframework">
+        <appender-ref ref="CONSOLE_DEBUG"/>
+        <appender-ref ref="FILE_DEBUG"/>
+    </category>
+
+    <!-- ================ iBATIS Category ================ -->
+     <category name="java.sql">
+        <appender-ref ref="CONSOLE_DEBUG"/>
+        <appender-ref ref="FILE_DEBUG"/>
+    </category>
+    
+    <!-- ================ emapi Category ================ -->
+
+    <category name="com.bmc.ctmem.emapi">
+        <appender-ref ref="CONSOLE_DEBUG"/>
+        <appender-ref ref="FILE_DEBUG"/>
+    </category>
+    
+    <!-- ================ ezjobs Category ================ -->
+
+    <category name="com.ghayoun.ezjobs">
+        <appender-ref ref="CONSOLE_DEBUG"/>
+        <appender-ref ref="FILE_DEBUG"/>
+    </category>
+
+</log4j:configuration>

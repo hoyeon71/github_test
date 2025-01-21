@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ORACLE_CTM">
+	
+	<typeAlias alias="CommonBean" 					type="com.ghayoun.ezjobs.comm.domain.CommonBean" />
+	<typeAlias alias="DefJobBean" 					type="com.ghayoun.ezjobs.m.domain.DefJobBean" />
+	<typeAlias alias="PreJobMissMatchBean" 			type="com.ghayoun.ezjobs.m.domain.PreJobMissMatchBean" />
+	<typeAlias alias="BatchResultTotalBean" 		type="com.ghayoun.ezjobs.m.domain.BatchResultTotalBean" />
+	<typeAlias alias="JobGraphBean" 				type="com.ghayoun.ezjobs.m.domain.JobGraphBean" />
+	<typeAlias alias="TimeInfoBean" 				type="com.ghayoun.ezjobs.m.domain.TimeInfoBean" />
+	<typeAlias alias="JobDetailBean" 				type="com.ghayoun.ezjobs.m.domain.JobDetailBean" />
+	<typeAlias alias="JobMemoBean" 					type="com.ghayoun.ezjobs.m.domain.JobMemoBean" />
+	<typeAlias alias="PreDateBatchScheduleBean" 	type="com.ghayoun.ezjobs.m.domain.PreDateBatchScheduleBean" />
+	<typeAlias alias="JobLogBean" 					type="com.ghayoun.ezjobs.m.domain.JobLogBean" />
+	<typeAlias alias="JobOpBean" 					type="com.ghayoun.ezjobs.m.domain.JobOpBean" />
+	<typeAlias alias="TotalJobStatus" 				type="com.ghayoun.ezjobs.m.domain.TotalJobStatus" />
+	<typeAlias alias="WaitDetailBean" 				type="com.ghayoun.ezjobs.m.domain.WaitDetailBean" />
+	<typeAlias alias="CtmInfoBean" 					type="com.ghayoun.ezjobs.m.domain.CtmInfoBean" />
+	<typeAlias alias="JobDefineInfoBean" 			type="com.ghayoun.ezjobs.m.domain.JobDefineInfoBean" />
+	<typeAlias alias="ActiveJobBean" 				type="com.ghayoun.ezjobs.m.domain.ActiveJobBean" />
+	<typeAlias alias="JobBasicInfo" 				type="com.ghayoun.ezjobs.t.domain.JobBasicInfo" />
+	<typeAlias alias="RelTableBean" 				type="com.ghayoun.ezjobs.m.domain.RelTableBean" />
+	<typeAlias alias="DocFileInfoBean" 				type="com.ghayoun.ezjobs.t.domain.DocFileInfoBean" />
+
+		<!-- 에이전트  상태-->
+	<select id="agentList" resultClass="CommonBean" parameterClass="java.util.Map">
+	/* ORACLE_CTM > agentList */
+	<![CDATA[
+		SELECT 	nodeid, agstat, hostname, version, os_name, platform, 
+				TO_char(TO_timestamp(last_upd, 'yyyymmddhh24miss'), 'yyyy/mm/dd hh24:mi:ss') AS last_upd,
+				'' AS AGENT_NM, '' AS AGENT_INFO
+		  FROM 	$CTMSVR_SCHEMA$.CMR_NODES
+		 ORDER 	BY hostname
+  		]]>
+	</select>
+	
+	<select id="cmsNodGrpList" parameterClass="java.util.Map" resultClass="CommonBean">
+	/* ORACLE_CTM > cmsNodGrpList */
+		SELECT #data_center# AS data_center, grpname
+		  FROM $CTMSVR_SCHEMA$.CMS_NODGRP
+		 WHERE 1 = 1
+		 
+		<isNotEmpty prepend="and" property="p_search_text">			
+			grpname like '%'||#p_search_text#||'%'
+		</isNotEmpty>		 
+		 
+		 GROUP BY grpname 
+		 ORDER BY grpname
+	</select>
+	
+	<select id="cmsNodGrpNodeList" parameterClass="java.util.Map" resultClass="CommonBean">
+	/* ORACLE_CTM > cmsNodGrpNodeList */
+		SELECT nodeid
+		  FROM $CTMSVR_SCHEMA$.CMS_NODGRP
+		 WHERE 1 = 1
+		   AND grpname = #grpname#		 
+		 ORDER BY nodeid
+	</select>
+	
+	<select id="ctmHostList" resultClass="CommonBean" parameterClass="java.util.Map">
+	/* ORACLE_CTM > ctmHostList */
+		SELECT
+		 		 nodeid
+				,agstat
+				,nodetype
+				,hostname
+				,version
+				,os_name
+				,platform
+				,permhosts
+		FROM(	
+			select 
+				 t1.nodeid
+				,t1.agstat
+				,t1.nodetype
+				,t1.hostname
+				,t1.version
+				,t1.os_name
+				,t1.platform
+				,t1.permhosts
+	
+			from cmr_nodes t1
+			
+			UNION
+	
+			select grpname, '', '', '', '', '', '', ''
+			FROM CTMUSER.CMS_NODGRP GROUP BY grpname
+			)
+		WHERE 1=1
+		AND UPPER(NODEID) LIKE '%'||UPPER(#p_code_name#)||'%'
+	</select>
+	
+	<select id="hostList" resultClass="DefJobBean" parameterClass="java.util.Map">
+	/* ORACLE_CTM > hostList */
+		SELECT nodeid 
+		 FROM cms_nodid
+		WHERE appltype = #appltype#
+		 ORDER BY nodeid
+	</select>
+</sqlMap>

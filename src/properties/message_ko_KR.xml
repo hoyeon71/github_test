@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="ERROR.01">처리에러</entry>
+	<entry key="ERROR.02">사용할 수 없는 아이디입니다.</entry>
+	<entry key="ERROR.03">[영문소문자] 및 [숫자] 조합만 허용됩니다(4자이상).(단, 아이디 첫글자는 [영문소문자]이어야 합니다).</entry>
+	<entry key="ERROR.04">해당 아이디는 존재하지 않습니다.</entry>
+	<entry key="ERROR.05">패스워드가 틀립니다.</entry>
+	<entry key="ERROR.06">서비스에러(관리자에게 문의하세요.) </entry>
+	<entry key="ERROR.07">로그인이 만료되었습니다.</entry>
+	<entry key="ERROR.08">아이디 또는 패스워드가 틀립니다.</entry>
+	<entry key="ERROR.09">해당 DATER CENTER는 지원하지 않습니다.</entry>
+	<entry key="ERROR.10">중복된 아이디가 존재합니다.</entry>
+	<entry key="ERROR.11">사용자를 등록하세요.</entry>
+	<entry key="ERROR.12">중복된 사용자가 존재합니다.</entry>
+	<entry key="ERROR.13">해당 권한이 없습니다.</entry>
+	<entry key="ERROR.14">사용자가 존재합니다. 변경후 삭제해 주세요.</entry>
+	<entry key="ERROR.15">해당 파일은 업로드할 수 없습니다.</entry>
+	<entry key="ERROR.16">해당 JOB은 결재올린 이후 삭제되었거나 수정된 상태입니다.</entry>
+	<entry key="ERROR.17">중복된 JOB NAME이 존재합니다.</entry>
+	<entry key="ERROR.18">중복된 AGENT가 존재합니다.</entry>
+	<entry key="ERROR.19">호스트정보가 존재하지 않습니다.</entry>
+	<entry key="ERROR.20">운영결재자와 중복된 사용자가 존재합니다.</entry>
+	<entry key="ERROR.21">중복된 대메뉴가 존재합니다.</entry>
+	<entry key="ERROR.22">중복된 소메뉴가 존재합니다.</entry>
+	<entry key="ERROR.23">파일이 존재하지 않습니다.</entry>
+	<entry key="ERROR.24">중복된 그룹명이 존재합니다.</entry>
+	<entry key="ERROR.25">root 계정으로 작업을 등록시 부부장 직급을 한명 결재라인에 저장해주세요.</entry>
+	<entry key="ERROR.26">결재자를 등록하세요.</entry>
+	<entry key="ERROR.27">운영결재자가 중복되었습니다.</entry>
+	<entry key="ERROR.28">운영결재자 순서가 중복되었습니다.</entry>
+	<entry key="ERROR.29">결재자가 중복되었습니다.</entry>
+	<entry key="ERROR.30">결재자 순서가 중복되었습니다.</entry>
+	<entry key="ERROR.31">태그명이 중복되었습니다.</entry>
+	<entry key="ERROR.32">중복된 TABLE NAME이 존재합니다.</entry>
+	<entry key="ERROR.33">계정이 잠김 상태입니다. 관리자에게 문의 부탁드립니다.</entry>
+	<entry key="ERROR.34">패스워드 주기가 만료되었습니다.</entry>
+	<entry key="ERROR.35">패스워드는 8자 이상의 영문+숫자+특수문자의 조합을 사용해 주세요.</entry>
+	<entry key="ERROR.36">패스워드는 동일한 4자리 이상의 숫자/문자 조합은 불가능합니다.</entry>
+	<entry key="ERROR.37">패스워드는 연속된 4자리 이상의 숫자/문자 조합은 불가능합니다.</entry>
+	<entry key="ERROR.38">직전의 패스워드는 불가능합니다.</entry>
+	<entry key="ERROR.39">해당 아이디는 퇴사상태입니다.</entry>
+	<entry key="ERROR.40">반영대기 상태로 변경 실패입니다.</entry>
+	<entry key="ERROR.41">일괄요청서 승인은 동일한 작업명 불가입니다.</entry>
+	<entry key="ERROR.42">중복된 TAB/APP/GRP가 존재합니다.</entry>
+	<entry key="ERROR.43">패스워드가 초기화 되었습니다.</entry>
+	<entry key="ERROR.44">결재선을 등록해 주세요.</entry>
+	<entry key="ERROR.45">코드명이 중복되었습니다.</entry>
+	<entry key="ERROR.46">중복된 호스트명이 존재합니다.</entry>
+	<entry key="ERROR.47">저장 또는 미결상태의 요청서가 존재합니다.</entry>
+	<entry key="ERROR.48">사용은 한개만 가능합니다.</entry>
+	<entry key="ERROR.49">이미 결재 처리되었습니다.</entry> 
+	<entry key="ERROR.50">결재라인을 확인해 주세요.(내정보-결재선설정)\n\n은행 담당자 : 부서장\n협력사 담당자 : 협력사 현장대리인 -> 부서장</entry>
+	<entry key="ERROR.51">결재구분이 중복되었습니다.</entry>
+	<entry key="ERROR.52">저장/미결/반영대기 상태의 엑셀일괄요청서가 존재합니다.</entry>
+	<entry key="ERROR.53">반영일 전이라서 결재가 불가합니다.</entry>
+	<entry key="ERROR.54">CTM 폴더가 동기화 진행중이라 처리 불가합니다.</entry>
+	<entry key="ERROR.55">후결 결재선 이후 순차결재선을 설정할 수 없습니다.</entry>
+	<entry key="ERROR.56">[관리자 문의] 필수 결재선을 확인해 주세요.</entry>
+	<entry key="ERROR.57">해당 폴더의 권한이 없습니다. 관리자에게 문의 해주세요.</entry>
+	<entry key="ERROR.58">직전[5번]의 패스워드는 불가능합니다.</entry>
+	<entry key="ERROR.59">패스워드는 8자 이상의 영문+숫자+특수문자의 조합을 사용해 주세요.[길이확인]</entry>
+	<entry key="ERROR.60">패스워드는 8자 이상의 영문+숫자+특수문자의 조합을 사용해 주세요.[숫자확인]</entry>
+	<entry key="ERROR.61">패스워드는 8자 이상의 영문+숫자+특수문자의 조합을 사용해 주세요.[특수문자확인]</entry>
+	<entry key="ERROR.62">패스워드는 8자 이상의 영문+숫자+특수문자의 조합을 사용해 주세요.[소문자확인]</entry>
+	<entry key="ERROR.63">장기 미사용자 접속자입니다. 관리자에게 문의해주세요.</entry>
+	<entry key="ERROR.64">패스워드에는 아이디 4자리 이상은 사용이 불가능합니다.</entry>
+	<entry key="ERROR.65">같은날에 중복된 작업명을 신청할 수 없습니다.</entry>
+	<entry key="ERROR.66">자주 사용하는 문자열은 사용할 수 없습니다.</entry>
+	<entry key="ERROR.67">연속된 자판배열이 포함된 문자열은 사용할 수 없습니다.</entry>
+	<entry key="ERROR.68">유저관리에 등록되어 있는 아이피를 확인해주세요.</entry>
+	<entry key="ERROR.69">이중 로그인이 확인되어 로그아웃 처리됩니다.</entry>
+	<entry key="ERROR.70">[관리자 문의] 폴더를 등록해주세요.</entry>
+	<entry key="ERROR.71">해당 그룹은 현재 필수결재선에서 사용중 입니다.</entry>
+	<entry key="ERROR.72">이미 반영 처리되었습니다.</entry>
+	<entry key="ERROR.73">반영취소 상태인 작업은 결재 불가합니다.</entry>
+	<entry key="ERROR.74">ODATE 형식이 맞지않습니다. (ex : 20230101)</entry>
+	<entry key="ERROR.75">해당 문서를 조회할 수 없습니다.</entry>
+	<entry key="ERROR.76">그룹에 작업이 존재하지 않습니다.</entry>
+	<entry key="ERROR.77">해당 그룹에 다른 C-M의 작업이 들어갈 수 없습니다.</entry>
+	<entry key="ERROR.78">해당 폴더or어플리케이션or그룹에 속한 작업이 존재합니다.</entry>
+	<entry key="ERROR.79">순차 결재선 이전에 후결결재선을 설정할 수 없습니다.</entry>
+	<entry key="ERROR.80">작업이 존재하지 않습니다.</entry>
+	<entry key="ERROR.81">결재라인에 동일한 결재자를 등록할 수 없습니다.</entry>
+	<entry key="ERROR.82">해당 문서가 존재하지 않습니다.</entry>
+	<entry key="ERROR.83">부서이름이 중복되었습니다.</entry>
+	<entry key="ERROR.84">직책이름이 중복되었습니다.</entry>
+	<entry key="ERROR.85">세부사항(문서구분/후결)이 동일한 결재그룹은 등록할 수 없습니다.</entry>
+
+	<entry key="ERROR.PARAM.01">{0}를(을) 입력하세요.</entry>
+	<entry key="ERROR.PARAM.02">{0}를(을) 선택하세요.</entry>
+	<entry key="ERROR.PARAM.03">{0}를(을) 체크하세요.</entry>
+	<entry key="ERROR.PARAM.04">{0}과(와) {1}이(가) 일치하지 않습니다.</entry>
+	<entry key="ERROR.PARAM.05">{0}형식이 틀립니다.</entry>
+	
+	<entry key="ERROR.DGB.01">처리에러(ITMS DB)</entry>
+	<entry key="ERROR.DGB.02">처리에러(ITMS DB ROWCOUNT:0)</entry>
+	<entry key="ERROR.DGB.03">해당 Shell은 배치온라인이 아닙니다.</entry>
+	<entry key="ERROR.DGB.04">OLB 타입니다. 배치온라인이외에는 사용할수 없습니다.</entry>
+	
+	<entry key="ERROR.500">시스템 오류(500:관리자에게 문의하세요.)</entry>
+	<entry key="ERROR.403">잘못된 접근방식입니다.(403)</entry>
+	<entry key="ERROR.404">잘못된 접근방식입니다.(404)</entry>
+	
+	<entry key="DEBUG.01">처리완료</entry>
+	<entry key="DEBUG.02">사용할 수 있는 아이디입니다.</entry>
+	<entry key="DEBUG.03">처리되었습니다.</entry>
+	<entry key="DEBUG.04">로그인되었습니다.</entry>
+	<entry key="DEBUG.05">로그아웃되었습니다.</entry>
+	<entry key="DEBUG.06">데이터가 존재하지 않습니다.</entry>
+	<entry key="DEBUG.07">삭제하시겠습니까?</entry>
+	<entry key="DEBUG.08">등록이 실패하였습니다.</entry>
+	<entry key="DEBUG.09">성공적으로 업로드  되었습니다.</entry>
+	<entry key="DEBUG.10">성공적으로 오더 되었습니다.</entry>
+	<entry key="DEBUG.11">성공적으로 삭제  되었습니다.</entry>
+	<entry key="DEBUG.12">성공적으로 실행 되었습니다.</entry>
+	<entry key="DEBUG.13">성공적으로 등록 되었습니다.</entry>
+	<entry key="DEBUG.14">수정하시겠습니까?</entry>
+	<entry key="DEBUG.15">등록하시겠습니까?</entry>
+	<entry key="DEBUG.16">결재완료</entry>
+	<entry key="DEBUG.17">반영완료</entry>
+	<entry key="DEBUG.18">승인취소완료</entry>
+	<entry key="DEBUG.19">삭제완료</entry>
+	<entry key="DEBUG.20">반려완료</entry>
+	<entry key="DEBUG.PARAM.01">{0},{1} 디버그01</entry>
+	<entry key="DEBUG.PARAM.02">{0} 하시겠습니까?</entry>
+	
+	<entry key="ERROR.BIND.0001">시스템 장애</entry>
+	<entry key="ERROR.BIND.0002">인증 실패(중복 접속, 바인드 ID가 없거나 사용정비, 라인타입 오류 등)</entry>
+	<entry key="ERROR.BIND.0004">BIND 안됨</entry>
+	<entry key="ERROR.BIND.0020">UNKNOWN</entry>
+	
+	<entry key="ERROR.DELIVER.0001">시스템 장애</entry>
+	<entry key="ERROR.DELIVER.0003">메시지 형식 오류</entry>
+	<entry key="ERROR.DELIVER.0017">Callback URL 사용자 아님</entry>
+	<entry key="ERROR.DELIVER.0018">메시지 중복 발송</entry>
+	<entry key="ERROR.DELIVER.0019">월 송신 건 수 초과</entry>
+	<entry key="ERROR.DELIVER.0020">UNKNOWN</entry>
+	<entry key="ERROR.DELIVER.0021">잘못된 전화번호(자릿수 안맞음)</entry>
+	<entry key="ERROR.DELIVER.0022">착신번호 에러(없는 국번)</entry>
+	<entry key="ERROR.DELIVER.0026">데이콤 스팸 필터링</entry>
+	<entry key="ERROR.DELIVER.0028">미등록 발신 번호</entry>
+	<entry key="ERROR.DELIVER.0029">발신번호 세칙 위반</entry>
+	
+	<entry key="ERROR.AUTOCALL.00">정상</entry>
+	<entry key="ERROR.AUTOCALL.01">데이터 오류</entry>
+	<entry key="ERROR.AUTOCALL.02">통화 성공</entry>
+	<entry key="ERROR.AUTOCALL.03">통화중</entry>
+	<entry key="ERROR.AUTOCALL.04">부재중</entry>
+	<entry key="ERROR.AUTOCALL.05">기타 오류</entry>
+	
+	<entry key="SEND.RETURN.00">정상</entry>
+	<entry key="SEND.RETURN.01">발송 실패</entry>
+	
+	<entry key="ERROR.HOLD">[HOLD] Running, Deleted 상태는 진행할 수 없습니다.</entry>
+	<entry key="ERROR.CONFIRM">[CONFIRM] Wait Confirm 상태만 가능합니다.</entry>
+	<entry key="ERROR.FORCEOK">[FORCEOK] Running, Job Success 상태는 진행할 수 없습니다.</entry>
+	<entry key="ERROR.FREE">[FREE] HOLD 상태만 가능합니다.</entry>
+	<entry key="ERROR.KILL">[KILL] Running 상태만 가능합니다.</entry>
+	<entry key="ERROR.RUNNOW">[RUNNOW] Confirm 제외한 Wait 상태만 가능합니다.</entry>
+	<entry key="ERROR.RERUN">[RERUN] Job Fail, Job Success 상태만 가능합니다.</entry>
+	<entry key="ERROR.DELETE">[DELETE] Running 상태는 진행할 수 없습니다.</entry>
+	<entry key="ERROR.UNDELETE">[UNDELETE] Deleted 상태만 가능합니다.</entry>
+	<entry key="ERROR.HOLD.FREE">HOLD 상태는 FREE 먼저 진행해주세요.</entry>
+	
+	<entry key="ERROR.APPROVAL.02">[결재] 결재할 수 없는 상태입니다.</entry>
+	<entry key="ERROR.APPROVAL.04">[반려] 미결 상태만 가능합니다.</entry>
+	<entry key="ERROR.APPROVAL.CANCEL">[승인취소] 1차결재자 미결 상태만 가능합니다.</entry>
+	<entry key="ERROR.APPROVAL.APPLY">[반영] 반영대기 상태만 가능합니다.</entry>
+	<entry key="ERROR.APPROVAL.DEL">[삭제] 이미 삭제된 상태입니다.</entry>
+	<entry key="ERROR.APPROVAL.UDT">[수정] 수정할 수 없는 상태입니다.</entry>
+	<entry key="ERROR.APPROVAL.DRAFT">[승인요청] 승인요청할 수 없는 상태입니다.</entry>
+	<entry key="ERROR.APPROVAL.ADMIN">[즉시결재] 즉시결재할 수 없는 상태입니다.</entry>
+
+</properties>

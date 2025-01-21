@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns:context="http://www.springframework.org/schema/context"
+		 xmlns:tx="http://www.springframework.org/schema/tx" 
+		 xmlns:aop="http://www.springframework.org/schema/aop"
+		 xsi:schemaLocation="http://www.springframework.org/schema/beans  
+		 http://www.springframework.org/schema/beans/spring-beans.xsd  
+		 http://www.springframework.org/schema/tx  
+		 http://www.springframework.org/schema/tx/spring-tx.xsd  
+		 http://www.springframework.org/schema/aop  
+		 http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<!-- common -->
+	<bean id="commonDao" class="com.ghayoun.ezjobs.comm.repository.CommonDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="commonService" class="com.ghayoun.ezjobs.comm.service.CommonServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="ctmInfoDao" ref="mCtmInfoDao" />
+	</bean>
+	
+	
+	
+	
+	<!-- m start ##################################################################-->
+	
+	<!-- em -->
+	<bean id="mEmActiveJobsDao" class="com.ghayoun.ezjobs.m.repository.EmActiveJobsDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mEmActiveJobsService" class="com.ghayoun.ezjobs.m.service.EmActiveJobsServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emActiveJobsDao" ref="mEmActiveJobsDao" />
+	</bean>
+	
+	<bean id="mEmDefJobsDao" class="com.ghayoun.ezjobs.m.repository.EmDefJobsDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mEmDefJobsService" class="com.ghayoun.ezjobs.m.service.EmDefJobsServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emDefJobsDao" ref="mEmDefJobsDao" />
+	</bean>
+	
+	<bean id="mEmPreJobMissMatchDao" class="com.ghayoun.ezjobs.m.repository.EmPreJobMissMatchDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mEmPreJobMissMatchService" class="com.ghayoun.ezjobs.m.service.EmPreJobMissMatchServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emPreJobMissMatchDao" ref="mEmPreJobMissMatchDao" />
+	</bean>
+	
+	<bean id="mEmBatchResultTotalDao" class="com.ghayoun.ezjobs.m.repository.EmBatchResultTotalDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mEmBatchResultTotalService" class="com.ghayoun.ezjobs.m.service.EmBatchResultTotalServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emBatchResultTotalDao" ref="mEmBatchResultTotalDao" />
+	</bean>
+	
+	<bean id="mEmPreDateBatchScheduleDao" class="com.ghayoun.ezjobs.m.repository.EmPreDateBatchScheduleDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mEmPreDateBatchScheduleService" class="com.ghayoun.ezjobs.m.service.EmPreDateBatchScheduleServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emPreDateBatchScheduleDao" ref="mEmPreDateBatchScheduleDao" />
+	</bean>
+	
+	<bean id="mEmJobLogDao" class="com.ghayoun.ezjobs.m.repository.EmJobLogDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mEmJobLogService" class="com.ghayoun.ezjobs.m.service.EmJobLogServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emJobLogDao" ref="mEmJobLogDao" />
+	</bean>
+	
+	<bean id="mEmCtmInfoDao" class="com.ghayoun.ezjobs.m.repository.EmCtmInfoDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	
+	<bean id="mEmCtmInfoService" class="com.ghayoun.ezjobs.m.service.EmCtmInfoServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emCtmInfoDao" ref="mEmCtmInfoDao" />
+	</bean>
+	<bean id="mCtmInfoDao" class="com.ghayoun.ezjobs.m.repository.CtmInfoDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_ctm" />
+	</bean>
+	<bean id="mCtmInfoService" class="com.ghayoun.ezjobs.m.service.CtmInfoServiceImpl">
+		<property name="commonDao" 		ref="commonDao" />
+		<property name="ctmInfoDao" 		ref="mCtmInfoDao" />
+	</bean>
+	
+	<!-- bim -->
+	<bean id="mBimDao" class="com.ghayoun.ezjobs.m.repository.BimDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mBimService" class="com.ghayoun.ezjobs.m.service.BimServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="bimDao" ref="mBimDao" />
+	</bean>
+	
+	<!-- popup -->
+	<bean id="mPopupJobGraphDao" class="com.ghayoun.ezjobs.m.repository.PopupJobGraphDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mPopupJobGraphService" class="com.ghayoun.ezjobs.m.service.PopupJobGraphServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="popupJobGraphDao" ref="mPopupJobGraphDao" />
+	</bean>
+	
+	<bean id="mPopupTimeInfoDao" class="com.ghayoun.ezjobs.m.repository.PopupTimeInfoDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mPopupTimeInfoService" class="com.ghayoun.ezjobs.m.service.PopupTimeInfoServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="popupTimeInfoDao" ref="mPopupTimeInfoDao" />
+	</bean>
+	
+	<bean id="mPopupJobDetailDao" class="com.ghayoun.ezjobs.m.repository.PopupJobDetailDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mPopupJobDetailService" class="com.ghayoun.ezjobs.m.service.PopupJobDetailServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="popupJobDetailDao" ref="mPopupJobDetailDao" />		
+	</bean>
+		
+	<bean id="mPopupDefJobDetailDao" class="com.ghayoun.ezjobs.m.repository.PopupDefJobDetailDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mPopupDefJobDetailService" class="com.ghayoun.ezjobs.m.service.PopupDefJobDetailServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="popupDefJobDetailDao" ref="mPopupDefJobDetailDao" />
+	</bean>
+	
+	<bean id="mPopupWaitDetailDao" class="com.ghayoun.ezjobs.m.repository.PopupWaitDetailDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="mPopupWaitDetailService" class="com.ghayoun.ezjobs.m.service.PopupWaitDetailServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="popupWaitDetailDao" ref="mPopupWaitDetailDao" />
+	</bean>
+	
+	<!-- m end ##################################################################-->
+	
+	
+	<!-- t start ##################################################################-->
+	
+	<!-- em -->
+	<bean id="tEmJobDefinitionDao" class="com.ghayoun.ezjobs.t.repository.EmJobDefinitionDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmJobUploadDao" class="com.ghayoun.ezjobs.t.repository.EmJobUploadDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmJobOrderDao" class="com.ghayoun.ezjobs.t.repository.EmJobOrderDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmJobCreateDao" class="com.ghayoun.ezjobs.t.repository.EmJobCreateDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmJobDeleteDao" class="com.ghayoun.ezjobs.t.repository.EmJobDeleteDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmJobCondDao" class="com.ghayoun.ezjobs.t.repository.EmJobCondDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmJobActionDao" class="com.ghayoun.ezjobs.t.repository.EmJobActionDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmGrpDefinitionDao" class="com.ghayoun.ezjobs.t.repository.EmGrpDefinitionDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tEmConnectionProfileDao" class="com.ghayoun.ezjobs.t.repository.EmConnectionProfileDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	
+	<!-- works -->
+	<bean id="tWorksCompanyDao" class="com.ghayoun.ezjobs.t.repository.WorksCompanyDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tWorksCompanyService" class="com.ghayoun.ezjobs.t.service.WorksCompanyServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="worksCompanyDao" ref="tWorksCompanyDao" />
+	</bean>
+	
+	<bean id="tWorksUserDao" class="com.ghayoun.ezjobs.t.repository.WorksUserDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tWorksUserService" class="com.ghayoun.ezjobs.t.service.WorksUserServiceImpl">
+		<property name="commonDao" 			ref="commonDao" />
+		<property name="worksUserDao" 		ref="tWorksUserDao" />
+		<property name="worksCompanyDao" 	ref="tWorksCompanyDao" />
+	</bean>
+	
+	<bean id="tWorksApprovalLineDao" class="com.ghayoun.ezjobs.t.repository.WorksApprovalLineDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tWorksApprovalLineService" class="com.ghayoun.ezjobs.t.service.WorksApprovalLineServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="worksApprovalLineDao" ref="tWorksApprovalLineDao" />
+	</bean>
+	
+	<bean id="tWorksApprovalDocDao" class="com.ghayoun.ezjobs.t.repository.WorksApprovalDocDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	
+	<bean id="emDeleteConditionDao" class="com.ghayoun.ezjobs.t.repository.EmDeleteConditionDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	
+	<bean id="tWorksApprovalDocService" class="com.ghayoun.ezjobs.t.service.WorksApprovalDocServiceImpl">
+		<property name="commonDao" 					ref="commonDao" />
+		<property name="worksApprovalDocDao" 		ref="tWorksApprovalDocDao" />
+		<property name="worksUserDao" 				ref="tWorksUserDao" />		
+		<property name="emJobDefinitionDao" 		ref="tEmJobDefinitionDao" />
+		<property name="emJobUploadDao" 			ref="tEmJobUploadDao" />
+		<property name="emJobOrderDao" 				ref="tEmJobOrderDao" />
+		<property name="emJobCreateDao" 			ref="tEmJobCreateDao" />
+		<property name="emJobDeleteDao" 			ref="tEmJobDeleteDao" />
+		<property name="emJobCondDao" 				ref="tEmJobCondDao" />
+		<property name="emJobActionDao" 			ref="tEmJobActionDao" />
+		<property name="emGrpDefinitionDao" 		ref="tEmGrpDefinitionDao" />
+		<property name="emBatchResultTotalDao" 		ref="mEmBatchResultTotalDao" />
+		<property name="popupDefJobDao" 			ref="tPopupDefJobDao" />
+		<property name="worksApprovalLineDao" 		ref="tWorksApprovalLineDao" />
+		<property name="emDeleteConditionDao" 		ref="emDeleteConditionDao" />
+		<property name="quartzDao" 					ref="quartzDao" />
+	</bean>	
+	
+	<!-- popup -->
+	<bean id="tPopupDefJobDao" class="com.ghayoun.ezjobs.t.repository.PopupDefJobDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="tPopupDefJobService" class="com.ghayoun.ezjobs.t.service.PopupDefJobServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="popupDefJobDao" ref="tPopupDefJobDao" />
+		<property name="ctmInfoDao" ref="mCtmInfoDao" />
+	</bean>
+	
+	<!-- t end ##################################################################-->
+	
+	<!-- a start ##################################################################-->
+	
+	<!-- em -->
+	<bean id="aEmAlertDao" class="com.ghayoun.ezjobs.a.repository.EmAlertDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	<bean id="aEmAlertService" class="com.ghayoun.ezjobs.a.service.EmAlertServiceImpl">
+		<property name="commonDao" ref="commonDao" />
+		<property name="emAlertDao" ref="aEmAlertDao" />
+	</bean>
+	
+	<!-- a end ##################################################################-->
+	
+	<bean id="quartzDao" class="com.ghayoun.ezjobs.comm.repository.QuartzDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>	
+
+	<bean id="popupDefJobsDao" class="com.ghayoun.ezjobs.t.repository.PopupDefJobDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_em" />
+	</bean>
+	
+	<bean id="mPopupJobDetailCtmDao" class="com.ghayoun.ezjobs.m.repository.PopupJobDetailCtmDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClient_ctm" />
+	</bean>
+	<bean id="mPopupJobDetailCtmService" class="com.ghayoun.ezjobs.m.service.PopupJobDetailCtmServiceImpl">
+		<property name="commonDao" 				ref="commonDao" />
+		<property name="popupJobDetailDao" 		ref="mPopupJobDetailDao" />
+		<property name="popupJobDetailCtmDao" 	ref="mPopupJobDetailCtmDao" />
+	</bean>
+
+	<bean id="emJobLogDao" class="com.ghayoun.ezjobs.m.repository.EmJobLogDaoImpl">
+		<property name="sqlMapClient" 			ref="sqlMapClient_em" />
+	</bean>
+</beans>
+

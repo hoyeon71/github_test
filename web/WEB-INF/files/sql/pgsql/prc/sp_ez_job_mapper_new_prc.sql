@@ -1,0 +1,1027 @@
+CREATE OR REPLACE FUNCTION ezjobs4.sp_ez_job_mapper_new_prc(OUT r_code character varying, OUT r_msg character varying, p_doc_cd character varying, p_flag character varying, p_data_center character varying, p_job character varying, p_user_cd_1 character varying, p_user_cd_2 character varying, p_user_cd_3 character varying, p_user_cd_4 character varying, p_user_cd_5 character varying, p_user_cd_6 character varying, p_user_cd_7 character varying, p_user_cd_8 character varying, p_user_cd_9 character varying, p_user_cd_10 character varying, p_error_description character varying, p_user_cd character varying, p_mapper_cd character varying, p_sms_1 character varying, p_sms_2 character varying, p_sms_3 character varying, p_sms_4 character varying, p_sms_5 character varying, p_sms_6 character varying, p_sms_7 character varying, p_sms_8 character varying, p_sms_9 character varying, p_sms_10 character varying, p_mail_1 character varying, p_mail_2 character varying, p_mail_3 character varying, p_mail_4 character varying, p_mail_5 character varying, p_mail_6 character varying, p_mail_7 character varying, p_mail_8 character varying, p_mail_9 character varying, p_mail_10 character varying, p_grp_cd_1 character varying, p_grp_cd_2 character varying, p_grp_sms_1 character varying, p_grp_sms_2 character varying, p_grp_mail_1 character varying, p_grp_mail_2 character varying, p_late_sub character varying, p_late_time character varying, p_late_exec character varying, p_batchjobgrade character varying, p_udt_user character varying, p_del_user character varying, p_jobschedgb character varying, p_success_sms_yn character varying, p_s_user_cd character varying, p_s_user_ip character varying)
+    RETURNS record
+    LANGUAGE plpgsql
+AS $function$
+
+DECLARE
+
+    v_chk_cnt numeric;
+    v_max_cnt numeric;
+
+    rec_affected 	numeric;
+
+BEGIN
+
+    if p_flag = 'one_update_doc' then
+        begin
+	        
+            SELECT COUNT(*)
+            INTO v_chk_cnt
+            FROM ezjobs4.EZ_JOB_MAPPER_DOC
+            WHERE data_center = p_data_center
+              AND job = p_job
+              AND doc_cd = p_doc_cd;
+
+            if v_chk_cnt = 0 then
+                begin
+                    INSERT INTO ezjobs4.EZ_JOB_MAPPER_DOC (
+                                                           data_center
+                                                          ,doc_cd
+                                                          ,job
+
+                                                          ,user_cd_1
+                                                          ,user_cd_2
+                                                          ,user_cd_3
+                                                          ,user_cd_4
+                                                          ,user_cd_5
+                                                          ,user_cd_6
+                                                          ,user_cd_7
+                                                          ,user_cd_8
+                                                          ,user_cd_9
+                                                          ,user_cd_10
+
+                                                          ,error_description
+
+                                                          ,sms_1
+                                                          ,sms_2
+                                                          ,sms_3
+                                                          ,sms_4
+                                                          ,sms_5
+                                                          ,sms_6
+                                                          ,sms_7
+                                                          ,sms_8
+                                                          ,sms_9
+                                                          ,sms_10
+
+                                                          ,mail_1
+                                                          ,mail_2
+                                                          ,mail_3
+                                                          ,mail_4
+                                                          ,mail_5
+                                                          ,mail_6
+                                                          ,mail_7
+                                                          ,mail_8
+                                                          ,mail_9
+                                                          ,mail_10
+
+                                                          ,grp_cd_1
+                                                          ,grp_cd_2
+                                                          ,grp_sms_1
+                                                          ,grp_sms_2
+                                                          ,grp_mail_1
+                                                          ,grp_mail_2
+
+                                                          ,late_sub
+                                                          ,late_time
+                                                          ,late_exec
+
+                                                          ,batchJobGrade
+                                                          ,jobSchedGb
+                                                          ,success_sms_yn
+
+                                                          ,ins_date
+                                                          ,ins_user_cd
+                                                          ,ins_user_ip
+                    )
+                    VALUES (
+                               p_data_center
+                           ,p_doc_cd
+                           ,p_job
+                           ,(case when p_user_cd_1 = '' then null else p_user_cd_1::integer end)
+                           ,(case when p_user_cd_2 = '' then null else p_user_cd_2::integer end)
+                           ,(case when p_user_cd_3 = '' then null else p_user_cd_3::integer end)
+                           ,(case when p_user_cd_4 = '' then null else p_user_cd_4::integer end)
+                           ,(case when p_user_cd_5 = '' then null else p_user_cd_5::integer end)
+                           ,(case when p_user_cd_6 = '' then null else p_user_cd_6::integer end)
+                           ,(case when p_user_cd_7 = '' then null else p_user_cd_7::integer end)
+                           ,(case when p_user_cd_8 = '' then null else p_user_cd_8::integer end)
+                           ,(case when p_user_cd_9 = '' then null else p_user_cd_9::integer end)
+                           ,(case when p_user_cd_10 = '' then null else p_user_cd_10::integer end)
+
+                           ,p_error_description
+
+                           ,p_sms_1
+                           ,p_sms_2
+                           ,p_sms_3
+                           ,p_sms_4
+                           ,p_sms_5
+                           ,p_sms_6
+                           ,p_sms_7
+                           ,p_sms_8
+                           ,p_sms_9
+                           ,p_sms_10
+
+                           ,p_mail_1
+                           ,p_mail_2
+                           ,p_mail_3
+                           ,p_mail_4
+                           ,p_mail_5
+                           ,p_mail_6
+                           ,p_mail_7
+                           ,p_mail_8
+                           ,p_mail_9
+                           ,p_mail_10
+
+                           ,(case when p_grp_cd_1 	= '' then null else p_grp_cd_1::integer end)
+                           ,(case when p_grp_cd_2 	= '' then null else p_grp_cd_2::integer end)
+                           ,p_grp_sms_1
+                           ,p_grp_sms_2
+                           ,p_grp_mail_1
+                           ,p_grp_mail_2
+
+                           ,p_late_sub
+                           ,p_late_time
+                           ,p_late_exec
+
+                           ,p_batchJobGrade
+                           ,p_jobSchedGb
+                           ,p_success_sms_yn
+
+                           ,current_timestamp
+                           ,p_s_user_cd::integer
+                           ,p_s_user_ip
+                           );
+
+                    GET DIAGNOSTICS rec_affected := ROW_COUNT;
+                    if rec_affected < 1 then
+                        begin
+                            r_code := '-1';
+                            r_msg := 'ERROR.01';
+                            RAISE EXCEPTION 'rec_affected 0';
+                        end;
+                    end if;
+
+                end;
+            end if;
+
+            if v_chk_cnt > 0 then
+                begin
+                    UPDATE ezjobs4.EZ_JOB_MAPPER_DOC SET
+                        user_cd_1 =   (case when p_user_cd_1 = '' then null else p_user_cd_1::integer end)
+                                                       ,user_cd_2 =   (case when p_user_cd_2 = '' then null else p_user_cd_2::integer end)
+                                                       ,user_cd_3 =   (case when p_user_cd_3 = '' then null else p_user_cd_3::integer end)
+                                                       ,user_cd_4 =   (case when p_user_cd_4 = '' then null else p_user_cd_4::integer end)
+                                                       ,user_cd_5 =   (case when p_user_cd_5 = '' then null else p_user_cd_5::integer end)
+                                                       ,user_cd_6 =   (case when p_user_cd_6 = '' then null else p_user_cd_6::integer end)
+                                                       ,user_cd_7 =   (case when p_user_cd_7 = '' then null else p_user_cd_7::integer end)
+                                                       ,user_cd_8 =   (case when p_user_cd_8 = '' then null else p_user_cd_8::integer end)
+                                                       ,user_cd_9 =   (case when p_user_cd_9 = '' then null else p_user_cd_9::integer end)
+                                                       ,user_cd_10 =   (case when p_user_cd_10 = '' then null else p_user_cd_10::integer end)
+
+                                                       ,error_description = p_error_description
+
+                                                       ,sms_1 = p_sms_1
+                                                       ,sms_2 = p_sms_2
+                                                       ,sms_3 = p_sms_3
+                                                       ,sms_4 = p_sms_4
+                                                       ,sms_5 = p_sms_5
+                                                       ,sms_6 = p_sms_6
+                                                       ,sms_7 = p_sms_7
+                                                       ,sms_8 = p_sms_8
+                                                       ,sms_9 = p_sms_9
+                                                       ,sms_10 = p_sms_10
+                                                       ,mail_1 = p_mail_1
+                                                       ,mail_2 = p_mail_2
+                                                       ,mail_3 = p_mail_3
+                                                       ,mail_4 = p_mail_4
+                                                       ,mail_5 = p_mail_5
+                                                       ,mail_6 = p_mail_6
+                                                       ,mail_7 = p_mail_7
+                                                       ,mail_8 = p_mail_8
+                                                       ,mail_9 = p_mail_9
+                                                       ,mail_10 = p_mail_10
+
+                                                       ,grp_cd_1 =   (case when p_grp_cd_1 = '' then null else p_grp_cd_1::integer end)
+                                                       ,grp_cd_2 =   (case when p_grp_cd_2 = '' then null else p_grp_cd_2::integer end)
+                                                       ,grp_sms_1 = p_grp_sms_1
+                                                       ,grp_sms_2 = p_grp_sms_2
+                                                       ,grp_mail_1 = p_grp_mail_1
+                                                       ,grp_mail_2 = p_grp_mail_2
+
+                                                       ,late_sub   = p_late_sub
+                                                       ,late_time  = p_late_time
+                                                       ,late_exec  = p_late_exec
+
+                                                       ,batchJobGrade  = p_batchJobGrade
+                                                       ,jobSchedGb     = p_jobSchedGb
+                                                       ,success_sms_yn	= p_success_sms_yn
+
+                                                       ,udt_date 	    = current_timestamp
+                                                       ,udt_user_cd 	= p_s_user_cd::integer
+                                                       ,udt_user_ip   	= p_s_user_ip
+
+                    WHERE data_center = p_data_center
+                      AND job = p_job
+                      AND doc_cd = p_doc_cd;
+
+                    GET DIAGNOSTICS rec_affected := ROW_COUNT;
+                    if rec_affected < 1 then
+                        begin
+                            r_code := '-1';
+                            r_msg := 'ERROR.01';
+                            RAISE EXCEPTION 'rec_affected 0';
+                        end;
+                    end if;
+
+
+                end;
+            end if;
+        end;
+    end if;
+
+    if p_flag = 'one_update' then
+        begin
+
+            SELECT COUNT(*)
+            INTO v_chk_cnt
+            FROM ezjobs4.EZ_JOB_MAPPER
+            WHERE data_center = p_data_center
+              AND job = p_job;
+
+            if v_chk_cnt = 0 then
+                begin
+
+                    -- 다른 C-M 작업 매퍼 정보는 삭제 후 신규 등록
+                    DELETE FROM ezjobs4.EZ_JOB_MAPPER WHERE job = p_job;
+
+                    INSERT INTO ezjobs4.EZ_JOB_MAPPER (
+                                                       data_center
+
+                                                      ,job
+                                                      ,user_cd_1
+                                                      ,user_cd_2
+                                                      ,user_cd_3
+                                                      ,user_cd_4
+                                                      ,user_cd_5
+                                                      ,user_cd_6
+                                                      ,user_cd_7
+                                                      ,user_cd_8
+                                                      ,user_cd_9
+                                                      ,user_cd_10
+
+                                                      ,error_description
+
+                                                      ,sms_1
+                                                      ,sms_2
+                                                      ,sms_3
+                                                      ,sms_4
+                                                      ,sms_5
+                                                      ,sms_6
+                                                      ,sms_7
+                                                      ,sms_8
+                                                      ,sms_9
+                                                      ,sms_10
+
+                                                      ,mail_1
+                                                      ,mail_2
+                                                      ,mail_3
+                                                      ,mail_4
+                                                      ,mail_5
+                                                      ,mail_6
+                                                      ,mail_7
+                                                      ,mail_8
+                                                      ,mail_9
+                                                      ,mail_10
+
+                                                      ,grp_cd_1
+                                                      ,grp_cd_2
+                                                      ,grp_sms_1
+                                                      ,grp_sms_2
+                                                      ,grp_mail_1
+                                                      ,grp_mail_2
+
+                                                      ,late_sub
+                                                      ,late_time
+                                                      ,late_exec
+
+                                                      ,batchJobGrade
+                                                      ,jobSchedGb
+                                                      ,success_sms_yn
+
+                                                      ,ins_date
+                                                      ,ins_user_cd
+                                                      ,ins_user_ip
+                    )       			VALUES (
+                                                p_data_center
+
+                                            ,p_job
+                                            ,(case when p_user_cd_1 = '' then null else p_user_cd_1 end)::integer
+                                            ,(case when p_user_cd_2 = '' then null else p_user_cd_2 end)::integer
+                                            ,(case when p_user_cd_3 = '' then null else p_user_cd_3 end)::integer
+                                            ,(case when p_user_cd_4 = '' then null else p_user_cd_4 end)::integer
+                                            ,(case when p_user_cd_5 = '' then null else p_user_cd_5 end)::integer
+                                            ,(case when p_user_cd_6 = '' then null else p_user_cd_6 end)::integer
+                                            ,(case when p_user_cd_7 = '' then null else p_user_cd_7 end)::integer
+                                            ,(case when p_user_cd_8 = '' then null else p_user_cd_8 end)::integer
+                                            ,(case when p_user_cd_9 = '' then null else p_user_cd_9 end)::integer
+                                            ,(case when p_user_cd_10 = '' then null else p_user_cd_10 end)::integer
+
+                                            ,p_error_description
+
+                                            ,p_sms_1
+                                            ,p_sms_2
+                                            ,p_sms_3
+                                            ,p_sms_4
+                                            ,p_sms_5
+                                            ,p_sms_6
+                                            ,p_sms_7
+                                            ,p_sms_8
+                                            ,p_sms_9
+                                            ,p_sms_10
+
+                                            ,p_mail_1
+                                            ,p_mail_2
+                                            ,p_mail_3
+                                            ,p_mail_4
+                                            ,p_mail_5
+                                            ,p_mail_6
+                                            ,p_mail_7
+                                            ,p_mail_8
+                                            ,p_mail_9
+                                            ,p_mail_10
+
+                                            ,(case when p_grp_cd_1 = '' then null else p_grp_cd_1 end)::integer
+                                            ,(case when p_grp_cd_2 = '' then null else p_grp_cd_2 end)::integer
+                                            ,p_grp_sms_1
+                                            ,p_grp_sms_2
+                                            ,p_grp_mail_1
+                                            ,p_grp_mail_2
+
+                                            ,p_late_sub
+                                            ,p_late_time
+                                            ,p_late_exec
+
+                                            ,p_batchJobGrade
+                                            ,p_jobSchedGb
+                                            ,p_success_sms_yn
+
+                                            ,current_timestamp
+                                            ,p_s_user_cd::integer
+                                            ,p_s_user_ip
+                                            );
+
+                    GET DIAGNOSTICS rec_affected := ROW_COUNT;
+                    if rec_affected < 1 then
+                        begin
+                            r_code := '-1';
+                            r_msg := 'ERROR.01';
+                            RAISE EXCEPTION 'rec_affected 0';
+                        end;
+                    end if;
+
+                end;
+            end if;
+
+            if v_chk_cnt > 0 then
+                begin
+
+                    UPDATE ezjobs4.EZ_JOB_MAPPER SET
+                        user_cd_1 =   (case when p_user_cd_1 = '' then null else p_user_cd_1 end)::integer
+                                                   ,user_cd_2 =   (case when p_user_cd_2 = '' then null else p_user_cd_2 end)::integer
+                                                   ,user_cd_3 =   (case when p_user_cd_3 = '' then null else p_user_cd_3 end)::integer
+                                                   ,user_cd_4 =   (case when p_user_cd_4 = '' then null else p_user_cd_4 end)::integer
+                                                   ,user_cd_5 =   (case when p_user_cd_5 = '' then null else p_user_cd_5 end)::integer
+                                                   ,user_cd_6 =   (case when p_user_cd_6 = '' then null else p_user_cd_6 end)::integer
+                                                   ,user_cd_7 =   (case when p_user_cd_7 = '' then null else p_user_cd_7 end)::integer
+                                                   ,user_cd_8 =   (case when p_user_cd_8 = '' then null else p_user_cd_8 end)::integer
+                                                   ,user_cd_9 =   (case when p_user_cd_9 = '' then null else p_user_cd_9 end)::integer
+                                                   ,user_cd_10 =   (case when p_user_cd_10 = '' then null else p_user_cd_10 end)::integer
+
+                                                   ,error_description = p_error_description
+
+                                                   ,sms_1 = p_sms_1
+                                                   ,sms_2 = p_sms_2
+                                                   ,sms_3 = p_sms_3
+                                                   ,sms_4 = p_sms_4
+                                                   ,sms_5 = p_sms_5
+                                                   ,sms_6 = p_sms_6
+                                                   ,sms_7 = p_sms_7
+                                                   ,sms_8 = p_sms_8
+                                                   ,sms_9 = p_sms_9
+                                                   ,sms_10 = p_sms_10
+
+                                                   ,mail_1 = p_mail_1
+                                                   ,mail_2 = p_mail_2
+                                                   ,mail_3 = p_mail_3
+                                                   ,mail_4 = p_mail_4
+                                                   ,mail_5 = p_mail_5
+                                                   ,mail_6 = p_mail_6
+                                                   ,mail_7 = p_mail_7
+                                                   ,mail_8 = p_mail_8
+                                                   ,mail_9 = p_mail_9
+                                                   ,mail_10 = p_mail_10
+
+                                                   ,grp_cd_1 	=   (case when p_grp_cd_1 = '' then null else p_grp_cd_1 end)::integer
+                                                   ,grp_cd_2 	=   (case when p_grp_cd_2 = '' then null else p_grp_cd_2 end)::integer
+                                                   ,grp_sms_1 	= p_grp_sms_1
+                                                   ,grp_sms_2 	= p_grp_sms_2
+                                                   ,grp_mail_1 	= p_grp_mail_1
+                                                   ,grp_mail_2 	= p_grp_mail_2
+
+                                                   ,late_sub = p_late_sub
+                                                   ,late_time = p_late_time
+                                                   ,late_exec = p_late_exec
+
+                                                   ,batchJobGrade 	= p_batchJobGrade
+                                                   ,jobSchedGb 		= p_jobSchedGb
+                                                   ,success_sms_yn 	= p_success_sms_yn
+
+                                                   ,udt_date 	    = current_timestamp
+                                                   ,udt_user_cd 		= p_s_user_cd::integer
+                                                   ,udt_user_ip   	= p_s_user_ip
+
+                    WHERE data_center = p_data_center
+                      AND job = p_job;
+
+                    GET DIAGNOSTICS rec_affected := ROW_COUNT;
+                    if rec_affected < 1 then
+                        begin
+                            r_code := '-1';
+                            r_msg := 'ERROR.01';
+                            RAISE EXCEPTION 'rec_affected 0';
+                        end;
+                    end if;
+
+                end;
+            end if;
+        end;
+    end if;
+
+    if p_flag = 'batch_update' then
+        begin
+
+            SELECT COUNT(*)
+            INTO v_chk_cnt
+            FROM ezjobs4.EZ_JOB_MAPPER
+            WHERE data_center = p_data_center
+              AND job = p_job;
+
+            if v_chk_cnt = 0 then
+                INSERT INTO ezjobs4.EZ_JOB_MAPPER (data_center, job, ins_date, ins_user_cd, ins_user_ip)
+                VALUES (p_data_center, p_job, current_timestamp, p_s_user_cd::integer, p_s_user_ip);
+
+                GET DIAGNOSTICS rec_affected := ROW_COUNT;
+                if rec_affected < 1 then
+                    begin
+                        r_code := '-1';
+                        r_msg := 'ERROR.01';
+                        RAISE EXCEPTION 'rec_affected 0';
+                    end;
+                end if;
+
+                SELECT COUNT(*)
+                INTO v_chk_cnt
+                FROM ezjobs4.EZ_JOB_MAPPER
+                WHERE data_center = p_data_center
+                  AND job = p_job;
+            end if;
+
+
+
+            if v_chk_cnt > 0 then
+
+                begin
+                    if split_part(p_mapper_cd, ',', 1 ) != '' and split_part(p_mapper_cd, ',', 1 ) is not null and split_part(p_udt_user, ',', 1 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_1      = split_part(p_mapper_cd, ',', 1 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 1 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_1  			= p_sms_1,
+                                mail_1			= p_mail_1
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 2 ) != '' and split_part(p_mapper_cd, ',', 2 ) is not null and split_part(p_udt_user, ',', 2 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_2      = split_part(p_mapper_cd, ',', 2 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 2 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_2  			= p_sms_2,
+                                mail_2			= p_mail_2
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 3 ) != '' and split_part(p_mapper_cd, ',', 3 ) is not null and split_part(p_udt_user, ',', 3 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_3      = split_part(p_mapper_cd, ',', 3 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 3 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_3  			= p_sms_3,
+                                mail_3			= p_mail_3
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 4 ) != '' and split_part(p_mapper_cd, ',', 4 ) is not null and split_part(p_udt_user, ',', 4 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_4      = split_part(p_mapper_cd, ',', 4 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 4 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_4  			= p_sms_4,
+                                mail_4			= p_mail_4
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 5 ) != '' and split_part(p_mapper_cd, ',', 5 ) is not null and split_part(p_udt_user, ',', 5 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_5      = split_part(p_mapper_cd, ',', 5 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 5 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_5  			= p_sms_5,
+                                mail_5			= p_mail_5
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 6 ) != '' and split_part(p_mapper_cd, ',', 6 ) is not null and split_part(p_udt_user, ',', 6 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_6      = split_part(p_mapper_cd, ',', 6 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 6 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_6  			= p_sms_6,
+                                mail_6			= p_mail_6
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 7 ) != '' and split_part(p_mapper_cd, ',', 7 ) is not null and split_part(p_udt_user, ',', 7 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_7      = split_part(p_mapper_cd, ',', 7 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 7 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_7  			= p_sms_7,
+                                mail_7			= p_mail_7
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 8 ) != '' and split_part(p_mapper_cd, ',', 8 ) is not null and split_part(p_udt_user, ',', 8 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_8      = split_part(p_mapper_cd, ',', 8 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 8 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_8  			= p_sms_8,
+                                mail_8			= p_mail_8
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 9 ) != '' and split_part(p_mapper_cd, ',', 9 ) is not null and split_part(p_udt_user, ',', 9 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_9      = split_part(p_mapper_cd, ',', 9 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 9 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_9  			= p_sms_9,
+                                mail_9			= p_mail_9
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 10 ) != '' and split_part(p_mapper_cd, ',', 10 ) is not null and split_part(p_udt_user, ',', 10 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_10      = split_part(p_mapper_cd, ',', 10 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 10 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                sms_10  		= p_sms_10,
+                                mail_10			= p_mail_10
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 11 ) != '' and split_part(p_mapper_cd, ',', 11 ) is not null and split_part(p_udt_user, ',', 11 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  grp_cd_1      = split_part(p_mapper_cd, ',', 11 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 11 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                grp_sms_1  		= p_grp_sms_1,
+                                grp_mail_1		= p_grp_mail_1
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_mapper_cd, ',', 12 ) != '' and split_part(p_mapper_cd, ',', 12 ) is not null and split_part(p_udt_user, ',', 12 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  grp_cd_2      = split_part(p_mapper_cd, ',', 12 )::integer
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_udt_user, ',', 12 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET     udt_date 	    = current_timestamp,
+                                udt_user_cd 	= p_s_user_cd::integer,
+                                udt_user_ip     = p_s_user_ip,
+                                grp_sms_2  		= p_grp_sms_2,
+                                grp_mail_2		= p_grp_mail_2
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 1 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_1       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_1  		= 'N',
+                             mail_1			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 2 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_2       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_2  		= 'N',
+                             mail_2			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 3 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_3       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_3  		= 'N',
+                             mail_3			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 4 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_4       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_4  		= 'N',
+                             mail_4			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 5 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_5       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_5  		= 'N',
+                             mail_5			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 6 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_6       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_6  		= 'N',
+                             mail_6			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 7 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_7       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_7  		= 'N',
+                             mail_7			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 8 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_8       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_8  		= 'N',
+                             mail_8			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 9 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_9       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_9  		= 'N',
+                             mail_9			= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 10 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  user_cd_10       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             sms_10  		= 'N',
+                             mail_10		= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 11 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  grp_cd_1       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             grp_sms_1  	= 'N',
+                             grp_mail_1		= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                    if split_part(p_del_user, ',', 12 ) = 'Y' then
+                        UPDATE  ezjobs4.EZ_JOB_MAPPER
+                        SET  grp_cd_2       = null,
+
+                             udt_date 	    = current_timestamp,
+                             udt_user_cd 	= p_s_user_cd::integer,
+                             udt_user_ip    = p_s_user_ip,
+                             grp_sms_2 		= 'N',
+                             grp_mail_2		= 'N'
+                        WHERE  data_center = p_data_center
+                          AND  job         = p_job;
+                    end if;
+
+                end;
+            end if;
+        end;
+    end if;
+
+    if p_flag = 'job_insert' then
+        begin
+            --해당 이름의 작업이 mapper에 있는지 확인, cnt > 0 이면 exception
+            SELECT COUNT(*)
+            INTO v_chk_cnt
+            FROM ezjobs4.EZ_JOB_MAPPER
+            WHERE job = p_job;
+
+            IF v_chk_cnt > 0 THEN
+                BEGIN
+                    r_code := '-1';
+                    r_msg := '이미 존재하는 작업입니다.';
+                    RAISE EXCEPTION 'rec_affected 0';
+                END;
+            END IF;
+
+            IF v_chk_cnt = 0 THEN
+                INSERT INTO ezjobs4.EZ_JOB_MAPPER(
+                    data_center,
+                    job,
+                    jobschedgb,
+                    late_sub,
+                    late_time,
+                    late_exec,
+                    success_sms_yn,
+                    ins_user_cd,
+                    ins_user_ip,
+                    ins_date
+                ) VALUES (
+                             p_data_center,
+                             p_job,
+                             1,
+                             p_late_sub,
+                             p_late_time,
+                             p_late_exec,
+                             p_success_sms_yn,
+                             p_s_user_cd::integer,
+                             p_s_user_ip,
+                             current_timestamp
+                         );
+
+                GET DIAGNOSTICS rec_affected := ROW_COUNT;
+                IF rec_affected < 1 THEN
+                    BEGIN
+                        r_code := '-1';
+                        r_msg := '작업 이관 실패.';
+                        RAISE EXCEPTION 'rec_affected 0';
+                    END;
+                END IF;
+            END IF;
+        end;
+    end if;
+
+    if p_flag = 'mapper_del' then
+        begin
+            --작업이 삭제되면 매퍼도 삭제
+            delete from ezjobs4.EZ_JOB_MAPPER
+            where 1=1
+              and data_center = p_data_center
+              and job = p_job;
+
+            /*GET DIAGNOSTICS rec_affected := ROW_COUNT;
+            IF rec_affected < 1 THEN
+                BEGIN
+               		r_code := '-1';
+	                r_msg := 'ERROR.01';
+	                RAISE EXCEPTION 'rec_affected 0';
+                END;
+            END IF;*/
+        end;
+    end if;
+
+    if p_flag = 'excel_user_update' then
+        begin
+            --해당 이름의 작업이 mapper에 있는지 확인, cnt > 0 이면 exception
+            SELECT COUNT(*)
+            INTO v_chk_cnt
+            FROM ezjobs4.EZ_JOB_MAPPER
+            WHERE job = p_job;
+
+            IF v_chk_cnt = 0 THEN
+                BEGIN
+                    r_code := '-1';
+                    r_msg := '존재하지 않은 작업입니다.';
+                    RAISE EXCEPTION 'rec_affected 0';
+                END;
+            END IF;
+
+            IF v_chk_cnt > 0 THEN
+                UPDATE ezjobs4.EZ_JOB_MAPPER SET
+                    user_cd_1 =   (case when p_user_cd_1 = '' then null else p_user_cd_1 end)::integer
+                                               ,user_cd_2 =   (case when p_user_cd_2 = '' then null else p_user_cd_2 end)::integer
+                                               ,user_cd_3 =   (case when p_user_cd_3 = '' then null else p_user_cd_3 end)::integer
+                                               ,user_cd_4 =   (case when p_user_cd_4 = '' then null else p_user_cd_4 end)::integer
+                                               ,user_cd_5 =   (case when p_user_cd_5 = '' then null else p_user_cd_5 end)::integer
+                                               ,user_cd_6 =   (case when p_user_cd_6 = '' then null else p_user_cd_6 end)::integer
+                                               ,user_cd_7 =   (case when p_user_cd_7 = '' then null else p_user_cd_7 end)::integer
+                                               ,user_cd_8 =   (case when p_user_cd_8 = '' then null else p_user_cd_8 end)::integer
+                                               ,user_cd_9 =   (case when p_user_cd_9 = '' then null else p_user_cd_9 end)::integer
+                                               ,user_cd_10 =   (case when p_user_cd_10 = '' then null else p_user_cd_10 end)::integer
+
+                                               ,sms_1 = p_sms_1
+                                               ,sms_2 = p_sms_2
+                                               ,sms_3 = p_sms_3
+                                               ,sms_4 = p_sms_4
+                                               ,sms_5 = p_sms_5
+                                               ,sms_6 = p_sms_6
+                                               ,sms_7 = p_sms_7
+                                               ,sms_8 = p_sms_8
+                                               ,sms_9 = p_sms_9
+                                               ,sms_10 = p_sms_10
+
+
+                                               ,mail_1 = p_mail_1
+                                               ,mail_2 = p_mail_2
+                                               ,mail_3 = p_mail_3
+                                               ,mail_4 = p_mail_4
+                                               ,mail_5 = p_mail_5
+                                               ,mail_6 = p_mail_6
+                                               ,mail_7 = p_mail_7
+                                               ,mail_8 = p_mail_8
+                                               ,mail_9 = p_mail_9
+                                               ,mail_10 = p_mail_10
+
+                                               ,grp_cd_1 = (case when p_grp_cd_1 = '' then null else p_grp_cd_1 end)::integer
+                                               ,grp_cd_2 = (case when p_grp_cd_2 = '' then null else p_grp_cd_2 end)::integer
+                                               ,grp_sms_1 = p_grp_sms_1
+                                               ,grp_sms_2 = p_grp_sms_2
+                                               ,grp_mail_1 = p_grp_mail_1
+                                               ,grp_mail_2 = p_grp_mail_2
+
+                                               ,udt_date 	    = current_timestamp
+                                               ,udt_user_cd 	= p_s_user_cd::integer
+                                               ,udt_user_ip   	= p_s_user_ip
+
+                WHERE 1=1
+                  and data_center = p_data_center
+                  and job = p_job;
+
+                GET DIAGNOSTICS rec_affected := ROW_COUNT;
+                if rec_affected < 1 then
+                    begin
+                        r_code := '-1';
+                        r_msg := '담당자 변경 실패.';
+                        RAISE EXCEPTION 'rec_affected 0';
+                    end;
+                end if;
+            END IF;
+        end;
+    end if;
+
+    r_code := '1';
+    r_msg := 'DEBUG.01';
+    return;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        r_code := '-1';
+        if r_msg IS NULL then
+            r_msg := 'ERROR.01';
+        end if;
+        r_code := '-2';
+        r_msg := SQLERRM;
+
+END;
+$function$
+;

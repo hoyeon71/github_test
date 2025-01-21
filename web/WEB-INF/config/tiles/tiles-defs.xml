@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC 
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+
+<tiles-definitions>
+	
+	<definition name="works/M/*/*" extends="works/layout/M">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/C01/*/*" extends="works/layout/C01">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/C02/*/*" extends="works/layout/C02">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/C03/*/*" extends="works/layout/C03">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/C04/*/*" extends="works/layout/C04">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/C05/*/*" extends="works/layout/C05">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/C06/*/*" extends="works/layout/C06">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/C08/*/*" extends="works/layout/C08">
+		<put-attribute name="body" value="/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="works/P/*/*/*" extends="works/layout/P">
+		<put-attribute name="body" value="/jsp/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+</tiles-definitions>

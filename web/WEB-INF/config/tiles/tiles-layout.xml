@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC 
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+       
+<tiles-definitions>
+
+	<!-- 페이지  레이아웃 -->
+	<definition name="works/layout/M" template="/jsp/common/layout/layoutM.jsp">
+	    <put-attribute  name="top" value="/jsp/common/inc/top.jsp" />
+	    <put-attribute  name="left" value="/jsp/common/inc/left.jsp" />
+	    <put-attribute  name="body" value="/jsp/common/inc/empty.jsp" />
+	  	<put-attribute  name="bottom" value="/jsp/common/inc/bottom.jsp" />
+	</definition>
+	
+	<definition name="works/layout/C01" template="/jsp/common/layout/layoutC01.jsp">		 
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+	<definition name="works/layout/C02" template="/jsp/common/layout/layoutC02.jsp">	    
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+	<definition name="works/layout/C03" template="/jsp/common/layout/layoutC03.jsp">	    
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+	<definition name="works/layout/C04" template="/jsp/common/layout/layoutC04.jsp">	    
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+	<definition name="works/layout/C05" template="/jsp/common/layout/layoutC05.jsp">	    
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+	<definition name="works/layout/C06" template="/jsp/common/layout/layoutC06.jsp">	    
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+	<definition name="works/layout/C08" template="/jsp/common/layout/layoutC08.jsp">	    
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+	<definition name="works/layout/P" template="/jsp/common/layout/layoutP.jsp">	    
+	  	<put-attribute  name="body" value="/jsp/works/common/inc/empty.jsp" />
+	</definition>
+	
+</tiles-definitions>
+

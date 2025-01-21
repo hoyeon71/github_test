@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns:context="http://www.springframework.org/schema/context"
+		 xmlns:tx="http://www.springframework.org/schema/tx" 
+		 xmlns:aop="http://www.springframework.org/schema/aop"
+		 xsi:schemaLocation="http://www.springframework.org/schema/beans  
+		 http://www.springframework.org/schema/beans/spring-beans.xsd  
+		 http://www.springframework.org/schema/tx  
+		 http://www.springframework.org/schema/tx/spring-tx.xsd  
+		 http://www.springframework.org/schema/aop  
+		 http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    	<property name="alwaysUseFullPath" value="true" />
+    	<property name="mappings">
+    		<props>
+    			<prop key="/common.ez">commonController</prop>    			
+    			<prop key="/mEm.ez">mEmController</prop>
+    			<prop key="/mBim.ez">mBimController</prop>
+    			<prop key="/mPopup.ez">mPopupController</prop>    			
+    			<prop key="/tEm.ez">tEmController</prop>
+    			<prop key="/tWorks.ez">tWorksController</prop>
+    			<prop key="/tPopup.ez">tPopupController</prop>    			
+    			<prop key="/aEm.ez">aEmController</prop>    			
+    			<prop key="/external.ez">externalCallController</prop>
+    		</props>
+    	</property>
+    </bean>
+	
+	<!-- common -->
+    <bean id="commonController"	 class="com.ghayoun.ezjobs.comm.controller.CommonController" >
+		<property name="methodNameResolver"	 			ref ="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		<property name="worksApprovalLineService" 		ref="tWorksApprovalLineService"/>
+		<property name="emActiveJobsService"          	ref="mEmActiveJobsService"/>
+		<property name="emCtmInfoService" 				ref="mEmCtmInfoService"/>
+		<property name="emDefJobsService" 				ref="mEmDefJobsService"/>
+		<property name="popupDefJobService" 			ref="tPopupDefJobService"/>
+		<property name="emJobLogService" 				ref="mEmJobLogService"/>
+		<property name="emBatchResultTotalService" 		ref="mEmBatchResultTotalService"/>
+	</bean>
+	
+	
+	
+	
+	<!-- m start ##################################################################-->
+	
+	<!-- em -->
+    <bean id="mEmController"	 class="com.ghayoun.ezjobs.m.controller.EmController" >
+		<property name="methodNameResolver" 				ref ="methodResolver"/>
+		<property name="commonService" 						ref="commonService"/>
+		<property name="emActiveJobsService" 				ref="mEmActiveJobsService"/>
+		<property name="emDefJobsService" 					ref="mEmDefJobsService"/>
+		<property name="emPreJobMissMatchService" 		ref="mEmPreJobMissMatchService"/>
+		<property name="emBatchResultTotalService" 			ref="mEmBatchResultTotalService"/>
+		<property name="emPreDateBatchScheduleService" 	ref="mEmPreDateBatchScheduleService"/>
+		<property name="emJobLogService" 					ref="mEmJobLogService"/>
+		<property name="popupDefJobDetailService" 			ref="mPopupDefJobDetailService"/>
+		<property name="emCtmInfoService" 					ref="mEmCtmInfoService"/>
+		<property name="ctmInfoService" 					ref="mCtmInfoService"/>
+		<property name="worksApprovalDocService" 		ref="tWorksApprovalDocService"/>	
+	</bean>
+	
+	<!-- bim -->
+    <bean id="mBimController"	 class="com.ghayoun.ezjobs.m.controller.BimController" >
+		<property name="methodNameResolver" 			ref ="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		<property name="bimService"	 					ref="mBimService"/>
+	</bean>
+	
+	<!-- popup -->
+    <bean id="mPopupController"	 class="com.ghayoun.ezjobs.m.controller.PopupController" >
+		<property name="methodNameResolver" 			ref ="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		<property name="popupJobGraphService" 			ref="mPopupJobGraphService"/>
+		<property name="popupTimeInfoService" 			ref="mPopupTimeInfoService"/>
+		<property name="popupJobDetailService" 			ref="mPopupJobDetailService"/>
+		<property name="popupJobDetailCtmService" 		ref="mPopupJobDetailCtmService"/>		
+		<property name="popupDefJobDetailService" 		ref="mPopupDefJobDetailService"/>
+		<property name="popupWaitDetailService" 		ref="mPopupWaitDetailService"/>
+		<property name="worksUserService" 				ref="tWorksUserService"/>
+		<property name="worksCompanyService" 			ref="tWorksCompanyService"/>
+		<property name="emJobLogService" 				ref="mEmJobLogService"/>		
+		<property name="worksApprovalDocService" 		ref="tWorksApprovalDocService"/>
+		<property name="worksApprovalLineService" 		ref="tWorksApprovalLineService"/>
+	</bean>
+	
+    <!-- m end ##################################################################-->
+    
+    <!-- t start ##################################################################-->
+	
+	<!-- em -->
+    <bean id="tEmController"	 class="com.ghayoun.ezjobs.t.controller.EmController" >
+		<property name="methodNameResolver" 			ref ="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		
+	</bean>
+	
+	<!-- works -->
+	<bean id="tWorksController"	 class="com.ghayoun.ezjobs.t.controller.WorksController" >
+		<property name="methodNameResolver" 			ref="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		<property name="worksCompanyService" 			ref="tWorksCompanyService"/>
+		<property name="worksUserService" 				ref="tWorksUserService"/>
+		<property name="worksApprovalLineService" 		ref="tWorksApprovalLineService"/>
+		<property name="worksApprovalDocService" 		ref="tWorksApprovalDocService"/>
+		<property name="popupDefJobService" 			ref="tPopupDefJobService"/>			
+		<property name="emAlertService" 					ref="aEmAlertService"/>
+	</bean>
+	
+	<!-- popup -->
+    <bean id="tPopupController"	 class="com.ghayoun.ezjobs.t.controller.PopupController" >
+		<property name="methodNameResolver" 			ref ="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		<property name="popupDefJobService" 			ref="tPopupDefJobService"/>
+		<property name="worksApprovalDocService" 		ref="tWorksApprovalDocService"/>
+		<property name="worksUserService" 				ref="tWorksUserService"/>
+	</bean>
+	
+    <!-- t end ##################################################################-->
+    
+    <!-- a start ##################################################################-->
+	
+	<!-- em -->
+    <bean id="aEmController"	 class="com.ghayoun.ezjobs.a.controller.EmController" >
+		<property name="methodNameResolver" 			ref ="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		<property name="emAlertService" 				ref="aEmAlertService"/>
+	</bean>
+	
+    <!-- a end ##################################################################-->
+    
+    <bean id="externalCallController"	 class="com.ghayoun.ezjobs.t.controller.ExternalCallController" >
+		<property name="methodNameResolver" 			ref="methodResolver"/>
+		<property name="commonService" 					ref="commonService"/>
+		<property name="worksCompanyService" 			ref="tWorksCompanyService"/>
+		<property name="worksUserService" 				ref="tWorksUserService"/>
+		<property name="worksApprovalLineService" 		ref="tWorksApprovalLineService"/>
+		<property name="worksApprovalDocService" 		ref="tWorksApprovalDocService"/>
+		<property name="popupDefJobService" 			ref="tPopupDefJobService"/>			
+		<property name="emAlertService" 				ref="aEmAlertService"/>
+	</bean>
+    
+    
+</beans>
+
